@@ -19,55 +19,99 @@
       --brand-2: #a78bfa;
       --radius: 18px;
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; background: radial-gradient(1000px 600px at 70% -10%, #0b1630 0, var(--bg) 60%); color: var(--text); line-height: 1.6; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color: var(--text); line-height: 1.6; background:#000; }
     a { color: var(--brand); text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /* Background scroll effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('Generated Image September 29, 2025 - 9_50PM-new.png') center/cover no-repeat fixed;
+      z-index: -3;
+      animation: scrollBg 60s linear infinite;
+    }
+    @keyframes scrollBg {
+      0% { background-position: center top; }
+      100% { background-position: center bottom; }
+    }
+
+    /* Dark overlay for readability */
+    body::after {
+      content: "";
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.65);
+      z-index: -2;
+      backdrop-filter: blur(3px);
+    }
+
+    /* Stars and music notes floating */
+    .overlay-notes {
+      content: "♪ ✦ ♫ ✧";
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      z-index: -1;
+      font-size: 40px;
+      color: rgba(255,255,255,0.15);
+      white-space: pre;
+      animation: floatNotes 15s linear infinite alternate;
+      pointer-events:none;
+    }
+    @keyframes floatNotes {
+      from { transform: translateY(0); opacity:0.4; }
+      to { transform: translateY(-60px); opacity:0.8; }
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; background:rgba(0,0,0,0.6); border-radius:var(--radius); }
     header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 0 24px; }
     .logo { display:flex; flex-direction:column; gap:6px; font-weight:800; letter-spacing:.5px; }
     .logo span.main { font-size: 20px; background: linear-gradient(90deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform:uppercase; }
     .logo span.sub { font-size:13px; color: var(--muted); }
     .tag { padding:4px 10px; border:1px solid #1f2937; background:#0b1222; color:#e2e8f0; border-radius:999px; font-size:12px; }
-    .hero { background: linear-gradient(135deg, rgba(56,189,248,.15), rgba(167,139,250,.15)); border:1px solid #1f2937; border-radius: var(--radius); padding: 28px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+    .hero { background: rgba(0,0,0,0.55); border:1px solid #1f2937; border-radius: var(--radius); padding: 28px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
     .hero h1 { margin: 0 0 8px; font-size: clamp(24px, 3.5vw, 40px); }
     .hero p { margin: 0; color: var(--muted); }
     .hero .buttons { margin-top: 12px; display:flex; gap:12px; flex-wrap:wrap; }
     .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #1f2937; background:#0d1426; color:#e5e7eb; font-weight:600; cursor:pointer; }
     .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b0f1a; border:none; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; margin-top: 24px; }
-    .card { background: #0a1224; border:1px solid #1f2937; border-radius: var(--radius); overflow:hidden; display:flex; flex-direction:column; }
-    .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, #0ea5e9, #7c3aed); opacity:.7; }
-    .card .content { padding:14px; display:flex; flex-direction:column; gap:8px; }
-    .title { font-weight:700; letter-spacing:.2px; }
-    .meta { font-size:12px; color: var(--muted); }
-    .row { display:flex; gap:10px; align-items:center; }
-    audio { width: 100%; filter: saturate(1.05); }
-    .price { margin-left:auto; font-weight:800; color:#f0f9ff; }
-    .buy { display:flex; gap:10px; }
-    .buy a { flex:1; text-align:center; padding:10px 12px; border-radius:10px; font-weight:700; border:1px solid #1f2937; background:#0e162b; }
-    .buy a.primary { background: linear-gradient(90deg, rgba(56,189,248,.25), rgba(167,139,250,.25)); }
-    .section { margin-top:40px; background:#0a1224; border:1px solid #1f2937; border-radius: var(--radius); padding: 22px; }
+    .section { margin-top:40px; background:rgba(0,0,0,0.55); border:1px solid #1f2937; border-radius: var(--radius); padding: 22px; }
     .section h2 { margin:0 0 6px; }
     footer { margin: 40px 0 10px; text-align:center; color:#94a3b8; font-size:13px; }
-    .license-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; }
-    .license { background:#0b1326; border:1px solid #1f2937; border-radius:14px; padding:14px; }
-    .license h3 { margin:0 0 8px; font-size:16px; }
-    .badge { background:#091120; border:1px solid #1f2937; padding:6px 10px; border-radius:999px; font-size:12px; color:#cbd5e1; }
-    .small { font-size:12px; color:#94a3b8; }
-    .notice { font-size:12px; color:#cbd5e1; background:#0b1222; border:1px dashed #334155; border-radius:12px; padding:10px; }
-    .mailto { color:#e2e8f0; font-weight:700; }
+
+    /* Pricing table */
+    .pricing { display:grid; grid-template-columns: repeat(3, 1fr); gap:28px; align-items:start; }
+    @media (max-width: 900px) { .pricing { grid-template-columns: 1fr; } }
+    .plan { background:#0b1326; border:1px solid #1f2937; border-radius:18px; padding:22px; text-align:center; box-shadow: 0 0 0 1px rgba(15,23,42,0.2) inset; }
+    .plan h3 { margin:0 0 8px; font-size:18px; font-weight:800; }
+    .plan .price { font-size:34px; font-weight:900; margin:6px 0 6px; }
+    .plan .subline { font-size:13px; color:#cbd5e1; margin-bottom:12px; }
+    .plan ul { list-style: none; padding:0; margin:0 0 16px; color:#cbd5e1; text-align:left; }
+    .plan ul li { position:relative; padding-left:18px; margin:6px 0; }
+    .plan ul li:before { content:"•"; position:absolute; left:0; top:0; color:#94a3b8; }
+    .deal { margin-top:16px; text-align:center; color:#e5e7eb; }
+    .deal small { display:block; color:#94a3b8; margin-bottom:6px; }
+    .deal strong { letter-spacing:.5px; }
+    .notice { font-size:12px; color:#f87171; background:#0b1222; border:1px dashed #334155; border-radius:12px; padding:10px; margin-top:16px; text-align:center; font-weight:700; }
+
+    /* Player styling */
+    .player-wrapper { border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.5); border: 1px solid #1f2937; }
+    .player-wrapper iframe { display: block; width: 100%; height: 700px; border: none; }
+    @media (max-width: 640px) { .player-wrapper iframe { height: 520px; } }
   </style>
 </head>
 <body>
+  <div class="overlay-notes">♪ ✦ ♫ ✧</div>
   <div class="container">
     <header>
       <div class="logo">
-        <span class="main">BankrollMadeThisBeat</span>
-        <span class="sub">Detroit, MI • Engineer • Super Producer</span>
+        <span class="main">BMTB Store</span>
+        <span class="sub">Super Producer • Engineer • Detroit, MI</span>
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
-        <span class="tag">Instant Delivery</span>
-        <a class="tag" href="#licenses">Licenses</a>
+        <a class="tag" href="#contact">Contact</a>
+        <a class="tag" href="https://bankrollmadethisbeat.gumroad.com/subscribe" target="_blank">Subscribe</a>
       </div>
     </header>
 
@@ -77,72 +121,77 @@
         <p>Produced by <strong>BankrollMadeThisBeat (BMTB)</strong>, straight from Detroit’s Eastside. Authentic hard‑hitting 808s, gritty melodies, and industry‑ready mixes. Secure checkout and instant file delivery included.</p>
         <div class="buttons">
           <a class="btn primary" href="#store">Browse Beats</a>
-          <a class="btn" href="mailto:youremail@example.com?subject=Custom%20Beat%20Inquiry">Custom Beats</a>
+          <a class="btn" href="mailto:bankrollmadethisbeat@gmail.com?subject=Custom%20Beat%20Inquiry">Custom Beats</a>
         </div>
       </div>
     </section>
 
     <section id="store" class="section">
       <h2>Beat Store</h2>
-      <p class="small">Paste your player embed below (BeatStars Blaze, Airbit, Soundee, etc.). This page is ready for any <code>&lt;script&gt;</code> or <code>&lt;iframe&gt;</code> they provide.</p>
-      <iframe src="https://player.beatstars.com/?storeId=124564" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
-          <div style="font-size:12px">Example: BeatStars Blaze or Airbit iframe</div>
-        </div>
+      <div class="player-wrapper">
+        <iframe src="https://player.beatstars.com/?storeId=124564" allow="autoplay"></iframe>
       </div>
-
-      <!-- EXAMPLES (remove these comments after you paste your real embed) -->
-      <!--
-      1) BeatStars Blaze (replace data-store-url with yours):
-      <div class="bs-blaze" data-store-url="https://www.beatstars.com/yourname"></div>
-      <script src="https://player.beatstars.com/blaze.min.js" async></script>
-
-      2) Airbit (replace src with your embed URL):
-      <iframe src="https://airbit.com/embed/yourusername?theme=dark" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
-
-      3) Soundee (replace src):
-      <iframe src="https://player.soundee.com/yourplayerid" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
-      -->
     </section>
 
     <section id="licenses" class="section">
       <h2>Licenses</h2>
-      <div class="license-list">
-        <div class="license">
-          <h3>Basic Lease <span class="badge">$29</span></h3>
+      <div class="pricing">
+        <div class="plan">
+          <h3>Basic License</h3>
+          <div class="price">$50.00</div>
+          <div class="subline">must buy exclusive for stems and wav file</div>
           <ul>
-            <li>MP3 + WAV</li>
-            <li>Non‑exclusive</li>
-            <li>Up to 100k streams</li>
-            <li>1 music video</li>
-            <li>Credit: “Prod. by BankrollMadeThisBeat”</li>
+            <li>Used for Music Recording</li>
+            <li>Distribute up to 2,000 copies</li>
+            <li>500,000 Online Audio Streams</li>
+            <li>1 Music Video</li>
+            <li>For Profit Live Performances</li>
+            <li>Radio Broadcasting rights (2 Stations)</li>
           </ul>
+          <div class="deal">
+            <small>Bulk deals:</small>
+            <strong>BUY 2 TRACKS, GET 1 FREE!</strong>
+          </div>
         </div>
-        <div class="license">
-          <h3>Premium Lease <span class="badge">$79</span></h3>
+        <div class="plan">
+          <h3>Premium License</h3>
+          <div class="price">$75.00</div>
+          <div class="subline">*TAGGED MP3 + TAGGED WAV*</div>
           <ul>
-            <li>MP3 + WAV + Stems</li>
-            <li>Non‑exclusive</li>
-            <li>Up to 1M streams</li>
-            <li>2 music videos</li>
-            <li>Monetize YouTube/Spotify</li>
+            <li>Used for Music Recording</li>
+            <li>Distribute up to 3,000 copies</li>
+            <li>500,000 Online Audio Streams</li>
+            <li>1 Music Video</li>
+            <li>For Profit Live Performances</li>
+            <li>Radio Broadcasting rights (2 Stations)</li>
           </ul>
+          <div class="deal">
+            <small>Bulk deals:</small>
+            <strong>BUY 2 TRACKS, GET 1 FREE!</strong>
+          </div>
         </div>
-        <div class="license">
-          <h3>Unlimited <span class="badge">$149</span></h3>
+        <div class="plan">
+          <h3>Exclusive Lease</h3>
+          <div class="price">MAKE AN OFFER</div>
+          <div class="subline" style="text-align:left; max-width:520px; margin:0 auto 12px;">
+            An exclusive lease agreement is a legal contract between a landlord and a single agent or company that gives the agent the sole right to lease the landlord's property.
+          </div>
           <ul>
-            <li>MP3 + WAV + Stems</li>
-            <li>Unlimited streams</li>
-            <li>Unlimited music videos</li>
-            <li>Monetize anywhere</li>
+            <li>Used for Music Recording</li>
+            <li>Distribute up to UNLIMITED copies</li>
+            <li>UNLIMITED Online Audio Streams</li>
+            <li>UNLIMITED Music Video</li>
+            <li>For Profit Live Performances</li>
+            <li>Radio Broadcasting rights (UNLIMITED Stations)</li>
           </ul>
         </div>
       </div>
-      <p class="notice">These are example terms—adjust to your policy and include a downloadable PDF license per product in Payhip/Gumroad. Exclusive rights available on request.</p>
+      <p class="notice">⚠️ NO REFUNDS ON ANY PURCHASES</p>
     </section>
 
     <section class="section">
       <h2>Contact</h2>
-      <p>Business inquiries: <a class="mailto" href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p>Business inquiries: <a class="mailto" href="mailto:youremail@example.com">BankrollMadeThisBeat.com</a></p>
     </section>
 
     <footer>
