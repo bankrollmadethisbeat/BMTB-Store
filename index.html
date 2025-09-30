@@ -63,7 +63,7 @@
     <header>
       <div class="logo">
         <span class="main">BankrollMadeThisBeat</span>
-        <span class="sub">Detroit, MI • Detroit Style Beats • BMTB</span>
+        <span class="sub">Detroit, MI • Engineer • Super Producer</span>
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
         <span class="tag">Instant Delivery</span>
@@ -76,16 +76,32 @@
         <h1>Detroit Style Beats with Global Flavor</h1>
         <p>Produced by <strong>BankrollMadeThisBeat (BMTB)</strong>, straight from Detroit’s Eastside. Authentic hard‑hitting 808s, gritty melodies, and industry‑ready mixes. Secure checkout and instant file delivery included.</p>
         <div class="buttons">
-          <a class="btn primary" href="#beats">Browse Beats</a>
+          <a class="btn primary" href="#store">Browse Beats</a>
           <a class="btn" href="mailto:youremail@example.com?subject=Custom%20Beat%20Inquiry">Custom Beats</a>
         </div>
       </div>
     </section>
 
-    <section id="beats" class="section">
-      <h2>Beats</h2>
-      <p class="small">Replace the demo MP3 URLs with your hosted files (Netlify, GitHub, or any direct HTTPS link). Replace the Buy buttons with your <strong>Payhip</strong> or <strong>Gumroad</strong> product links.</p>
-      <div class="grid" id="beatGrid"></div>
+    <section id="store" class="section">
+      <h2>Beat Store</h2>
+      <p class="small">Paste your player embed below (BeatStars Blaze, Airbit, Soundee, etc.). This page is ready for any <code>&lt;script&gt;</code> or <code>&lt;iframe&gt;</code> they provide.</p>
+      <iframe src="https://player.beatstars.com/?storeId=124564" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
+          <div style="font-size:12px">Example: BeatStars Blaze or Airbit iframe</div>
+        </div>
+      </div>
+
+      <!-- EXAMPLES (remove these comments after you paste your real embed) -->
+      <!--
+      1) BeatStars Blaze (replace data-store-url with yours):
+      <div class="bs-blaze" data-store-url="https://www.beatstars.com/yourname"></div>
+      <script src="https://player.beatstars.com/blaze.min.js" async></script>
+
+      2) Airbit (replace src with your embed URL):
+      <iframe src="https://airbit.com/embed/yourusername?theme=dark" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
+
+      3) Soundee (replace src):
+      <iframe src="https://player.soundee.com/yourplayerid" width="100%" height="700" frameborder="0" allow="autoplay"></iframe>
+      -->
     </section>
 
     <section id="licenses" class="section">
@@ -135,81 +151,7 @@
   </div>
 
   <script>
-    const BEATS = [
-      {
-        title: "Sky Drip (Type Beat)",
-        bpm: 142,
-        key: "F# minor",
-        price: 29,
-        audio: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Komiku_-_50_-_Sky_Castle/Komiku_-_02_-_Sky_Castle.mp3",
-        buy: "https://payhip.com/your-product-1"
-      },
-      {
-        title: "Midnight Flex",
-        bpm: 160,
-        key: "D minor",
-        price: 79,
-        audio: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Komiku_-_49_-_Battle_Of_Pogs/Komiku_-_08_-_Shopping_List.mp3",
-        buy: "https://payhip.com/your-product-2"
-      },
-      {
-        title: "Neon East",
-        bpm: 128,
-        key: "A minor",
-        price: 149,
-        audio: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Komiku_-_50_-_Sky_Castle/Komiku_-_12_-_Friends_Imaginary.mp3",
-        buy: "https://payhip.com/your-product-3"
-      }
-    ];
-
-    function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
-
-    const grid = document.getElementById('beatGrid');
-    BEATS.forEach(beat => {
-      const card = el('div', 'card');
-      const thumb = el('div', 'thumb');
-      card.appendChild(thumb);
-
-      const content = el('div', 'content');
-      const title = el('div', 'title');
-      title.textContent = beat.title;
-      const meta = el('div', 'meta');
-      meta.textContent = `${beat.bpm} BPM • ${beat.key}`;
-
-      const audio = document.createElement('audio');
-      audio.controls = true;
-      audio.src = beat.audio;
-      audio.preload = 'none';
-
-      const row = el('div', 'row');
-      row.appendChild(el('span', 'badge', 'Preview'));
-      const price = el('div', 'price', `$${beat.price}`);
-      row.appendChild(price);
-
-      const buy = el('div', 'buy');
-      const buyLink = el('a', 'primary');
-      buyLink.href = beat.buy;
-      buyLink.target = '_blank';
-      buyLink.rel = 'noopener';
-      buyLink.textContent = 'Buy / License';
-
-      const altLink = el('a');
-      altLink.href = '#licenses';
-      altLink.textContent = 'License Terms';
-
-      buy.appendChild(buyLink);
-      buy.appendChild(altLink);
-
-      content.appendChild(title);
-      content.appendChild(meta);
-      content.appendChild(audio);
-      content.appendChild(row);
-      content.appendChild(buy);
-
-      card.appendChild(content);
-      grid.appendChild(card);
-    });
-
+    // Footer year only
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
