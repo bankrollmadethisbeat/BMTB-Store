@@ -4,142 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BMTB Store</title>
-  <meta name="description" content="Detroit style beats by BankrollMadeThisBeat (BMTB). Instant delivery, non‑exclusive leases, secure checkout." />
-  <meta property="og:title" content="BMTB Store" />
-  <meta property="og:description" content="Detroit style beats by BankrollMadeThisBeat (BMTB). Instant delivery, non‑exclusive leases, secure checkout." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Exclusive Beats by BankrollMadeThisBeat (BMTB). Instant delivery, non-exclusive leases, secure checkout." />
   <style>
-    :root {
-      --bg: #0b0f1a;
-      --card: #111827;
-      --muted: #94a3b8;
-      --text: #e5e7eb;
-      --brand: #38bdf8;
-      --brand-2: #a78bfa;
-      --radius: 18px;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: #0b0f1a;
+      color: #e5e7eb;
+      line-height: 1.6;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color: var(--text); line-height: 1.6; background:#000; }
-    a { color: var(--brand); text-decoration: none; }
-
-    /* Background scroll effect */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('Generated Image September 29, 2025 - 9_50PM-new.png') center/cover no-repeat fixed;
-      z-index: -3;
-      animation: scrollBg 60s linear infinite;
+    a { color: #38bdf8; text-decoration: none; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background: #111827;
     }
-    @keyframes scrollBg {
-      0% { background-position: center top; }
-      100% { background-position: center bottom; }
+    .logo img { height: 60px; }
+    nav a { margin-left: 20px; font-weight: 600; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    h1, h2, h3 { font-weight: 800; margin-bottom: 12px; }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero h1 { font-size: 2.5rem; color: #38bdf8; }
+    .hero p { color: #94a3b8; }
+    .player-wrapper { margin: 30px 0; }
+    .player-wrapper iframe { width: 100%; height: 600px; border: none; border-radius: 12px; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .plan {
+      background: #111827; padding: 20px; border-radius: 12px;
+      text-align: center; border: 1px solid #1f2937;
     }
-
-    /* Dark overlay for readability */
-    body::after {
-      content: "";
-      position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.65);
-      z-index: -2;
-      backdrop-filter: blur(3px);
-    }
-
-    /* Stars and music notes floating */
-    .overlay-notes {
-      content: "♪ ✦ ♫ ✧";
-      position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      z-index: -1;
-      font-size: 40px;
-      color: rgba(255,255,255,0.15);
-      white-space: pre;
-      animation: floatNotes 15s linear infinite alternate;
-      pointer-events:none;
-    }
-    @keyframes floatNotes {
-      from { transform: translateY(0); opacity:0.4; }
-      to { transform: translateY(-60px); opacity:0.8; }
-    }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; background:rgba(0,0,0,0.6); border-radius:var(--radius); }
-    header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 0 24px; }
-    .logo { display:flex; flex-direction:column; gap:6px; font-weight:800; letter-spacing:.5px; }
-    .logo span.main { font-size: 20px; background: linear-gradient(90deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform:uppercase; }
-    .logo span.sub { font-size:13px; color: var(--muted); }
-    .tag { padding:4px 10px; border:1px solid #1f2937; background:#0b1222; color:#e2e8f0; border-radius:999px; font-size:12px; }
-    .hero { background: rgba(0,0,0,0.55); border:1px solid #1f2937; border-radius: var(--radius); padding: 28px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
-    .hero h1 { margin: 0 0 8px; font-size: clamp(24px, 3.5vw, 40px); }
-    .hero p { margin: 0; color: var(--muted); }
-    .hero .buttons { margin-top: 12px; display:flex; gap:12px; flex-wrap:wrap; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #1f2937; background:#0d1426; color:#e5e7eb; font-weight:600; cursor:pointer; }
-    .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b0f1a; border:none; }
-    .section { margin-top:40px; background:rgba(0,0,0,0.55); border:1px solid #1f2937; border-radius: var(--radius); padding: 22px; }
-    .section h2 { margin:0 0 6px; }
-    footer { margin: 40px 0 10px; text-align:center; color:#94a3b8; font-size:13px; }
-
-    /* Pricing table */
-    .pricing { display:grid; grid-template-columns: repeat(3, 1fr); gap:28px; align-items:start; }
-    @media (max-width: 900px) { .pricing { grid-template-columns: 1fr; } }
-    .plan { background:#0b1326; border:1px solid #1f2937; border-radius:18px; padding:22px; text-align:center; box-shadow: 0 0 0 1px rgba(15,23,42,0.2) inset; }
-    .plan h3 { margin:0 0 8px; font-size:18px; font-weight:800; }
-    .plan .price { font-size:34px; font-weight:900; margin:6px 0 6px; }
-    .plan .subline { font-size:13px; color:#cbd5e1; margin-bottom:12px; }
-    .plan ul { list-style: none; padding:0; margin:0 0 16px; color:#cbd5e1; text-align:left; }
-    .plan ul li { position:relative; padding-left:18px; margin:6px 0; }
-    .plan ul li:before { content:"•"; position:absolute; left:0; top:0; color:#94a3b8; }
-    .deal { margin-top:16px; text-align:center; color:#e5e7eb; }
-    .deal small { display:block; color:#94a3b8; margin-bottom:6px; }
-    .deal strong { letter-spacing:.5px; }
-    .notice { font-size:12px; color:#f87171; background:#0b1222; border:1px dashed #334155; border-radius:12px; padding:10px; margin-top:16px; text-align:center; font-weight:700; }
-
-    /* Player styling */
-    .player-wrapper { border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.5); border: 1px solid #1f2937; }
-    .player-wrapper iframe { display: block; width: 100%; height: 700px; border: none; }
-    @media (max-width: 640px) { .player-wrapper iframe { height: 520px; } }
+    .plan h3 { margin: 0; font-size: 18px; color: #38bdf8; }
+    .plan .price { font-size: 28px; margin: 12px 0; font-weight: 900; }
+    .plan ul { text-align: left; color: #cbd5e1; list-style: none; padding: 0; }
+    .plan ul li { margin: 6px 0; }
+    .notice { margin-top: 20px; padding: 12px; background: #1f2937; border: 1px solid #dc2626; color: #f87171; text-align: center; font-weight: 700; border-radius: 8px; }
+    footer { text-align: center; padding: 20px; font-size: 13px; color: #94a3b8; margin-top: 40px; }
   </style>
 </head>
 <body>
-  <div class="overlay-notes">♪ ✦ ♫ ✧</div>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <span class="main">BMTB Store</span>
-        <span class="sub">Super Producer • Engineer • Detroit, MI</span>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <a class="tag" href="#contact">Contact</a>
-        <a class="tag" href="https://bankrollmadethisbeat.gumroad.com/subscribe" target="_blank">Subscribe</a>
-      </div>
-    </header>
+  <header>
+    <div class="logo">
+      <img src="New Project (1).png" alt="BMTB Logo">
+    </div>
+    <nav>
+      <a href="https://www.youtube.com/@YbnLilBroTypeBeats" target="_blank">YouTube</a>
+      <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank">Instagram</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
+  <div class="container">
     <section class="hero">
-      <div>
-        <h1>Detroit Style Beats with Global Flavor</h1>
-        <p>Produced by <strong>BankrollMadeThisBeat (BMTB)</strong>, straight from Detroit’s Eastside. Authentic hard‑hitting 808s, gritty melodies, and industry‑ready mixes. Secure checkout and instant file delivery included.</p>
-        <div class="buttons">
-          <a class="btn primary" href="#store">Browse Beats</a>
-          <a class="btn" href="mailto:bankrollmadethisbeat@gmail.com?subject=Custom%20Beat%20Inquiry">Custom Beats</a>
-        </div>
-      </div>
+      <h1>Exclusive Beats</h1>
+      <p>Produced by <strong>BankrollMadeThisBeat (BMTB)</strong>. Instant delivery, secure checkout, and industry-ready quality.</p>
     </section>
 
-    <section id="store" class="section">
+    <section id="store">
       <h2>Beat Store</h2>
       <div class="player-wrapper">
         <iframe src="https://player.beatstars.com/?storeId=124564" allow="autoplay"></iframe>
       </div>
     </section>
 
-    <section id="licenses" class="section">
+    <section id="licenses">
       <h2>Licenses</h2>
       <div class="pricing">
         <div class="plan">
           <h3>Basic License</h3>
           <div class="price">$50.00</div>
-          <div class="subline">must buy exclusive for stems and wav file</div>
+          <p>must buy exclusive for stems and wav file</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to 2,000 copies</li>
@@ -148,15 +80,11 @@
             <li>For Profit Live Performances</li>
             <li>Radio Broadcasting rights (2 Stations)</li>
           </ul>
-          <div class="deal">
-            <small>Bulk deals:</small>
-            <strong>BUY 2 TRACKS, GET 1 FREE!</strong>
-          </div>
         </div>
         <div class="plan">
           <h3>Premium License</h3>
           <div class="price">$75.00</div>
-          <div class="subline">*TAGGED MP3 + TAGGED WAV*</div>
+          <p>*TAGGED MP3 + TAGGED WAV*</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to 3,000 copies</li>
@@ -165,17 +93,11 @@
             <li>For Profit Live Performances</li>
             <li>Radio Broadcasting rights (2 Stations)</li>
           </ul>
-          <div class="deal">
-            <small>Bulk deals:</small>
-            <strong>BUY 2 TRACKS, GET 1 FREE!</strong>
-          </div>
         </div>
         <div class="plan">
           <h3>Exclusive Lease</h3>
           <div class="price">MAKE AN OFFER</div>
-          <div class="subline" style="text-align:left; max-width:520px; margin:0 auto 12px;">
-            An exclusive lease agreement is a legal contract between a landlord and a single agent or company that gives the agent the sole right to lease the landlord's property.
-          </div>
+          <p>An exclusive lease agreement is a legal contract giving the buyer sole rights.</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to UNLIMITED copies</li>
@@ -186,21 +108,20 @@
           </ul>
         </div>
       </div>
-      <p class="notice">⚠️ NO REFUNDS ON ANY PURCHASES</p>
+      <div class="notice">⚠️ NO REFUNDS ON ANY PURCHASES</div>
     </section>
 
-    <section class="section">
+    <section id="contact">
       <h2>Contact</h2>
-      <p>Business inquiries: <a class="mailto" href="mailto:youremail@example.com">BankrollMadeThisBeat.com</a></p>
+      <p>Email: <a href="mailto:BankrollMadeThisBeat@gmail.com">BankrollMadeThisBeat@gmail.com</a></p>
     </section>
-
-    <footer>
-      © <span id="year"></span> BankrollMadeThisBeat (BMTB). All rights reserved.
-    </footer>
   </div>
 
+  <footer>
+    © <span id="year"></span> BankrollMadeThisBeat (BMTB). All rights reserved.
+  </footer>
+
   <script>
-    // Footer year only
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
