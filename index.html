@@ -5,16 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BMTB Store</title>
   <meta name="description" content="Exclusive Beats by BankrollMadeThisBeat (BMTB). Instant delivery, non-exclusive leases, secure checkout.(Buy 2 Get 1 FREE!!)" />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="BMTB Store | Exclusive Beats" />
+  <meta property="og:description" content="Hard-hitting beats by BankrollMadeThisBeat. Instant delivery and secure checkout." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="New Project (1).png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BMTB Store | Exclusive Beats" />
+  <meta name="twitter:description" content="Shop exclusive and lease beats from BMTB." />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
+
+    :root {
+      --bg: #000000;
+      --bg-soft: #111111;
+      --surface: #161616;
+      --surface-2: #1f1f1f;
+      --text: #ffffff;
+      --text-muted: #d3d3d3;
+      --brand: #ff2b2b;
+      --brand-2: #ffffff;
+      --brand-dark: #cc1010;
+      --line: #3a3a3a;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      background: #000000;
-      color: #ffffff;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      background-image:
+        radial-gradient(900px 500px at -10% -10%, rgba(255, 43, 43, 0.2), transparent 65%),
+        radial-gradient(700px 420px at 110% 0%, rgba(255, 255, 255, 0.08), transparent 60%),
+        linear-gradient(180deg, #080808 0%, #000000 100%);
     }
-    a {
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--brand);
       color: #ffffff;
+      padding: 8px 12px;
+      border-radius: 0 0 8px 8px;
+      z-index: 1000;
+    }
+    .skip-link:focus { left: 12px; }
+    a {
+      color: var(--text);
       text-decoration: none;
       font-weight: 600;
       position: relative;
@@ -27,72 +66,295 @@
       height: 2px;
       bottom: -3px;
       left: 0;
-      background-color: #ffffff;
+      background-color: var(--text);
       transition: width 0.3s ease;
     }
     a:hover {
-      color: #ff4d4d;
+      color: var(--brand);
     }
     a:hover::after {
       width: 100%;
     }
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 40px; background: #111111;
-      border-bottom: 2px solid #ff4d4d;
+      padding: 14px 24px;
+      background: rgba(8, 8, 8, 0.9);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(10px);
     }
-    .logo img { height: 100px; }
-    nav a { margin-left: 20px; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-    h1, h2, h3 { font-weight: 800; margin-bottom: 12px; color: #ffffff; }
-    .hero { text-align: center; margin-bottom: 40px; }
-    .hero h1 { font-size: 2.5rem; color: #ff4d4d; }
-    .hero p { color: #cccccc; }
-    .hero p strong { color: #ff4d4d; }
+    .logo img {
+      height: 72px;
+      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+    }
+    nav a {
+      margin-left: 18px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 46px 20px; }
+    h1, h2, h3 { font-weight: 800; margin-bottom: 12px; color: var(--text); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
+    section { margin-top: 24px; }
+    .hero {
+      text-align: center;
+      margin-bottom: 42px;
+      background: linear-gradient(165deg, rgba(255, 43, 43, 0.18), rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 20px 26px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      background: linear-gradient(90deg, #ffffff, #ff2b2b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+    .hero p { color: var(--text-muted); max-width: 780px; margin: 0 auto; }
+    .hero p strong { color: var(--brand); }
+    .offer-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid #8a2a2a;
+      background: rgba(255, 255, 255, 0.03);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-cta {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn::after { display: none; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(100deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 22px rgba(255, 43, 43, 0.34);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(100deg, var(--brand-dark), #8f0b0b);
+      color: #fff;
+    }
+    .btn-secondary { background: rgba(255, 255, 255, 0.02); color: var(--text); border-color: #4a4a4a; }
+    .btn-secondary:hover { border-color: #ff2b2b; box-shadow: 0 8px 18px rgba(255, 43, 43, 0.25); }
+    .highlights {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .highlight {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 13px;
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: left;
+    }
     .player-wrapper { margin: 30px 0; }
-    .player-wrapper iframe { width: 100%; height: 600px; border: 2px solid #ff4d4d; border-radius: 12px; }
+    .player-wrapper iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #4a4a4a;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      background: #111111;
+    }
     .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
     .plan {
-      background: #ff4d4d; padding: 20px; border-radius: 12px;
-      text-align: center; border: 2px solid #ffffff;
+      background: linear-gradient(180deg, rgba(255, 43, 43, 0.14), rgba(255, 255, 255, 0.04));
+      padding: 20px; border-radius: 14px;
+      text-align: center; border: 1px solid #5e2b2b;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      color: #000000;
+      color: var(--text);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
     }
     .plan:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(255,0,0,0.6);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(120, 20, 20, 0.45);
     }
-    .plan h3 { margin: 0; font-size: 18px; color: #000000; }
-    .plan .price { font-size: 28px; margin: 12px 0; font-weight: 900; color: #000000; }
-    .plan ul { text-align: left; color: #000000; list-style: none; padding: 0; }
-    .plan ul li { margin: 6px 0; }
-    .notice { margin-top: 20px; padding: 12px; background: #ff4d4d; border: 2px solid #ffffff; color: #000000; text-align: center; font-weight: 700; border-radius: 8px; }
-    footer { text-align: center; padding: 20px; font-size: 13px; color: #ffffff; margin-top: 40px; border-top: 2px solid #ff4d4d; }
+    .plan h3 { margin: 0; font-size: 18px; color: var(--text); }
+    .plan .price {
+      font-size: 30px;
+      margin: 10px 0;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ffffff, #ff2b2b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .plan p { color: var(--text-muted); }
+    .plan ul { text-align: left; color: var(--text); list-style: none; padding: 0; }
+    .plan ul li { margin: 6px 0; position: relative; padding-left: 16px; }
+    .plan ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #ff6b6b;
+      font-weight: 900;
+    }
+    .notice {
+      margin-top: 20px;
+      padding: 12px;
+      background: rgba(255, 43, 43, 0.16);
+      border: 1px solid #8a2a2a;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 700;
+      border-radius: 10px;
+    }
+    .faq {
+      margin-top: 48px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+    }
+    .faq details {
+      border-bottom: 1px solid #333333;
+      padding: 10px 0;
+    }
+    .faq details:last-child { border-bottom: none; }
+    .faq summary { cursor: pointer; font-weight: 700; }
+    .faq p { color: var(--text-muted); margin: 8px 0 0; }
+    .contact-card {
+      margin-top: 12px;
+      background: linear-gradient(180deg, rgba(255, 43, 43, 0.12), rgba(255, 255, 255, 0.03));
+      border: 1px solid #5a2e2e;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+    }
+    .contact-card p { margin: 8px 0; color: var(--text-muted); }
+    .contact-card p:first-child { color: var(--text); }
+    .contact-card .btn { margin-top: 8px; }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+    .modal-backdrop.show { display: flex; }
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 14px;
+      border: 1px solid #5a2e2e;
+      background: linear-gradient(180deg, rgba(255, 43, 43, 0.12), rgba(255, 255, 255, 0.03));
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .modal h3 { margin: 0 0 10px; }
+    .modal p { margin: 0 0 14px; color: var(--text-muted); }
+    .form-grid { display: grid; gap: 10px; }
+    .form-grid input, .form-grid textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #5a5a5a;
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text);
+      font: inherit;
+    }
+    .form-grid textarea { min-height: 110px; resize: vertical; }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+    .form-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    #store, #licenses, #contact { scroll-margin-top: 90px; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 44px;
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 900px) {
+      .highlights { grid-template-columns: 1fr; }
+      .player-wrapper iframe { height: 460px; }
+      header { padding: 14px 16px; }
+      nav a { margin-left: 12px; font-size: 14px; }
+      .logo img { height: 58px; }
+    }
+    @media (max-width: 600px) {
+      .player-wrapper iframe { height: 380px; }
+      .container { padding: 28px 14px; }
+      nav a { margin-left: 10px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="logo">
       <img src="New Project (1).png" alt="BMTB Logo">
     </div>
     <nav>
-      <a href="https://www.youtube.com/@YbnLilBroTypeBeats" target="_blank">YouTube</a>
-      <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank">Instagram</a>
-      <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank">Drumkits/Loopkits</a>
+      <a href="#store">Store</a>
+      <a href="#licenses">Licenses</a>
+      <a href="https://www.youtube.com/@YbnLilBroTypeBeats" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank" rel="noopener noreferrer">Drumkits</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <div class="container">
+  <main id="main" class="container">
     <section class="hero">
       <h1>Exclusive Beats</h1>
-      <p>Produced by <strong>BankrollMadeThisBeat (BMTB)</strong>. Instant delivery, secure checkout, and industry-ready quality. (Buy 2 Get 1 FREE!!) </p>
+      <p>Instant delivery, secure checkout, and industry-ready quality.</p>
+      <div class="offer-badge">Buy 2, Get 1 Free</div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#store">Browse Beats</a>
+        <a class="btn btn-secondary" href="#" id="exclusive-offer-btn">Make Exclusive Offer</a>
+      </div>
+      <div class="highlights">
+        <div class="highlight">Instant digital delivery after checkout.</div>
+        <div class="highlight">Mix-ready files for serious artists.</div>
+        <div class="highlight">Direct producer support when needed.</div>
+      </div>
     </section>
 
     <section id="store">
       <h2>Beat Store</h2>
       <div class="player-wrapper">
-        <iframe src="https://player.beatstars.com/?storeId=124564" allow="autoplay"></iframe>
+        <iframe src="https://player.beatstars.com/?storeId=124564" title="BeatStars store player" loading="lazy" allow="autoplay"></iframe>
       </div>
     </section>
 
@@ -102,7 +364,7 @@
         <div class="plan">
           <h3>Basic License</h3>
           <div class="price">$50.00</div>
-          <p>must buy exclusive for stems and wav file</p>
+          <p>Great for testing records and early releases.</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to 2,000 copies</li>
@@ -115,7 +377,7 @@
         <div class="plan">
           <h3>Premium License</h3>
           <div class="price">$75.00</div>
-          <p>*TAGGED MP3 + TAGGED WAV*</p>
+          <p>Tagged MP3 + tagged WAV included.</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to 3,000 copies</li>
@@ -126,9 +388,9 @@
           </ul>
         </div>
         <div class="plan">
-          <h3>Exclusive Lease</h3>
-          <div class="price">MAKE AN OFFER</div>
-          <p>An exclusive lease agreement is a legal contract giving the buyer sole rights.</p>
+          <h3>Exclusive Rights</h3>
+          <div class="price">Make an Offer</div>
+          <p>Buyer receives sole rights and the beat is removed from public sale.</p>
           <ul>
             <li>Used for Music Recording</li>
             <li>Distribute up to UNLIMITED copies</li>
@@ -142,10 +404,50 @@
       <div class="notice">⚠️ NO REFUNDS ON ANY PURCHASES</div>
     </section>
 
+    <section class="faq" aria-label="Frequently asked questions">
+      <h2>FAQ</h2>
+      <details>
+        <summary>How does Buy 2 Get 1 FREE work?</summary>
+        <p>Add 3 eligible beats to your cart and apply the promo in checkout if needed. If you need help, contact me directly.</p>
+      </details>
+      <details>
+        <summary>How fast is delivery?</summary>
+        <p>Delivery is instant after successful payment through the store checkout.</p>
+      </details>
+      <details>
+        <summary>Need custom production or a direct deal?</summary>
+        <p>Use the email below with your budget, style references, and timeline.</p>
+      </details>
+    </section>
+
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:BankrollMadeThisBeat@gmail.com">BankrollMadeThisBeat@gmail.com</a></p>
+      <div class="contact-card">
+        <p>Email: <a href="#" id="contact-email-link">bankrollmadethisbeat@gmail.com</a></p>
+        <p>Business Hours: Mon-Sat, 10AM-8PM ET</p>
+        <a class="btn btn-primary" href="#" id="send-inquiry-btn">Send Inquiry</a>
+      </div>
     </section>
+  </main>
+
+  <div class="modal-backdrop" id="inquiry-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-title">
+      <h3 id="inquiry-title">Send Inquiry</h3>
+      <p>Fill this out and your email app will open with your request pre-filled.</p>
+      <form id="inquiry-form" class="form-grid">
+        <input type="text" id="inq-name" name="name" placeholder="Name" required />
+        <input type="text" id="inq-beat" name="beat" placeholder="Beat name or link" required />
+        <textarea id="inq-details" name="details" placeholder="Request details" required></textarea>
+        <input type="text" id="inq-budget" name="budget" placeholder="Budget (optional)" />
+        <input type="hidden" name="_subject" value="New Beat Inquiry - BMTB Store" />
+        <input type="hidden" name="_captcha" value="false" />
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="inquiry-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+        <div class="form-status" id="inquiry-status" aria-live="polite"></div>
+      </form>
+    </div>
   </div>
 
   <footer>
@@ -154,6 +456,95 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const exclusiveOfferBtn = document.getElementById('exclusive-offer-btn');
+    if (exclusiveOfferBtn) {
+      exclusiveOfferBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('Please pick a beat first, then submit your exclusive offer request.');
+        window.location.href = 'mailto:bankrollmadethisbeat@gmail.com?subject=Exclusive%20Beat%20Offer&body=Beat%20name%2Flink%3A%20%0AOffer%20amount%3A%20%0AMessage%3A%20';
+      });
+    }
+
+    const inquiryModal = document.getElementById('inquiry-modal');
+    const sendInquiryBtn = document.getElementById('send-inquiry-btn');
+    const contactEmailLink = document.getElementById('contact-email-link');
+    const inquiryCancel = document.getElementById('inquiry-cancel');
+    const inquiryForm = document.getElementById('inquiry-form');
+    const inquiryStatus = document.getElementById('inquiry-status');
+    const inquirySubmitEndpoint = 'https://formsubmit.co/ajax/bankrollmadethisbeat@gmail.com';
+
+    const openInquiryModal = () => {
+      inquiryModal.classList.add('show');
+      inquiryModal.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeInquiryModal = () => {
+      inquiryModal.classList.remove('show');
+      inquiryModal.setAttribute('aria-hidden', 'true');
+    };
+
+    if (sendInquiryBtn && inquiryModal && inquiryForm) {
+      sendInquiryBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        openInquiryModal();
+      });
+
+      if (contactEmailLink) {
+        contactEmailLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          openInquiryModal();
+        });
+      }
+
+      inquiryModal.addEventListener('click', (event) => {
+        if (event.target === inquiryModal) closeInquiryModal();
+      });
+
+      if (inquiryCancel) {
+        inquiryCancel.addEventListener('click', closeInquiryModal);
+      }
+
+      inquiryForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        inquiryStatus.textContent = 'Sending...';
+
+        const formData = new FormData(inquiryForm);
+        fetch(inquirySubmitEndpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error('Failed to send');
+            return response.json();
+          })
+          .then(() => {
+            inquiryStatus.textContent = 'Inquiry sent successfully.';
+            inquiryForm.reset();
+            setTimeout(() => {
+              closeInquiryModal();
+              inquiryStatus.textContent = '';
+            }, 900);
+          })
+          .catch(() => {
+            inquiryStatus.textContent = 'Could not send here. Opening your email app as backup...';
+            const name = document.getElementById('inq-name').value.trim();
+            const beat = document.getElementById('inq-beat').value.trim();
+            const details = document.getElementById('inq-details').value.trim();
+            const budget = document.getElementById('inq-budget').value.trim();
+            const bodyLines = [
+              `Name: ${name}`,
+              `Beat name/link: ${beat}`,
+              `Request details: ${details}`,
+              `Budget (optional): ${budget || 'N/A'}`
+            ];
+            const mailto = `mailto:bankrollmadethisbeat@gmail.com?subject=${encodeURIComponent('Beat Inquiry')}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+            window.location.href = mailto;
+          });
+      });
+    }
   </script>
 </body>
 </html>
