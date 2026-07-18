@@ -3,19 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BMTB Store</title>
-  <meta name="description" content="Exclusive Beats by BankrollMadeThisBeat (BMTB). Instant delivery, non-exclusive leases, secure checkout.(Buy 2 Get 1 FREE!!)" />
+  <title>BMTB Store | Detroit Beats by BankrollMadeThisBeat</title>
+  <meta name="description" content="Industry-ready beats from Detroit's Eastside by BankrollMadeThisBeat (BMTB). Lease or buy exclusive rights with instant delivery. Buy 2 Get 1 Free & Buy 3 Get 2 Free on Basic License." />
+  <link rel="canonical" href="https://bankrollmadethisbeat.com/" />
+  <link rel="icon" type="image/png" href="bmtb-logo.png" />
+  <link rel="apple-touch-icon" href="bmtb-logo.png" />
   <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="BMTB Store | Exclusive Beats" />
-  <meta property="og:description" content="Hard-hitting beats by BankrollMadeThisBeat. Instant delivery and secure checkout." />
+  <meta property="og:title" content="BMTB Store | Detroit Beats by BankrollMadeThisBeat" />
+  <meta property="og:description" content="Hard-hitting 808s and gritty melodies from Detroit. Lease beats or make an exclusive offer with instant delivery." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="New Project (1).png" />
+  <meta property="og:url" content="https://bankrollmadethisbeat.com/" />
+  <meta property="og:image" content="https://bankrollmadethisbeat.com/bmtb-logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BMTB Store | Exclusive Beats" />
-  <meta name="twitter:description" content="Shop exclusive and lease beats from BMTB." />
+  <meta name="twitter:title" content="BMTB Store | Detroit Beats by BankrollMadeThisBeat" />
+  <meta name="twitter:description" content="Shop lease and exclusive beats from BMTB. Instant delivery and secure checkout." />
+  <meta name="twitter:image" content="https://bankrollmadethisbeat.com/bmtb-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
-
     :root {
       --bg: #000000;
       --bg-soft: #111111;
@@ -41,6 +47,7 @@
         radial-gradient(700px 420px at 110% 0%, rgba(255, 255, 255, 0.08), transparent 60%),
         linear-gradient(180deg, #080808 0%, #000000 100%);
     }
+    body.nav-open { overflow: hidden; }
     .skip-link {
       position: absolute;
       left: -9999px;
@@ -69,29 +76,46 @@
       background-color: var(--text);
       transition: width 0.3s ease;
     }
-    a:hover {
-      color: var(--brand);
-    }
-    a:hover::after {
-      width: 100%;
-    }
+    a:hover { color: var(--brand); }
+    a:hover::after { width: 100%; }
     header {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 14px 24px;
       background: rgba(8, 8, 8, 0.9);
       border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       backdrop-filter: blur(10px);
     }
     .logo img {
       height: 72px;
+      width: auto;
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
     }
-    nav a {
-      margin-left: 18px;
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 8px 12px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .site-nav a {
       font-size: 14px;
       letter-spacing: 0.2px;
     }
+    .site-nav a::after { bottom: -2px; }
     .container { max-width: 1140px; margin: 0 auto; padding: 46px 20px; }
     h1, h2, h3 { font-weight: 800; margin-bottom: 12px; color: var(--text); letter-spacing: -0.02em; }
     h2 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
@@ -102,23 +126,42 @@
       background: linear-gradient(165deg, rgba(255, 43, 43, 0.18), rgba(255, 255, 255, 0.05));
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 28px 20px 26px;
+      padding: 40px 24px 34px;
       box-shadow: var(--shadow);
     }
+    .hero-eyebrow {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
       background: linear-gradient(90deg, #ffffff, #ff2b2b);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-top: 0;
-      margin-bottom: 6px;
+      margin: 0 0 12px;
+      line-height: 1.05;
     }
-    .hero p { color: var(--text-muted); max-width: 780px; margin: 0 auto; }
-    .hero p strong { color: var(--brand); }
+    .hero-tagline {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    .offer-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
     .offer-badge {
       display: inline-block;
-      margin-top: 14px;
       padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid #8a2a2a;
@@ -129,8 +172,14 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+    .offer-note {
+      margin: 10px auto 0;
+      max-width: 420px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
     .hero-cta {
-      margin-top: 18px;
+      margin-top: 22px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -143,6 +192,8 @@
       border: 1px solid var(--line);
       font-weight: 700;
       letter-spacing: 0.2px;
+      cursor: pointer;
+      font: inherit;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     }
     .btn::after { display: none; }
@@ -157,22 +208,250 @@
       background: linear-gradient(100deg, var(--brand-dark), #8f0b0b);
       color: #fff;
     }
-    .btn-secondary { background: rgba(255, 255, 255, 0.02); color: var(--text); border-color: #4a4a4a; }
-    .btn-secondary:hover { border-color: #ff2b2b; box-shadow: 0 8px 18px rgba(255, 43, 43, 0.25); }
-    .highlights {
-      margin-top: 26px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      border-color: #4a4a4a;
     }
-    .highlight {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    .btn-secondary:hover {
+      border-color: #ff2b2b;
+      box-shadow: 0 8px 18px rgba(255, 43, 43, 0.25);
+    }
+    .social-proof {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+    }
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .proof-stat {
+      text-align: center;
+      padding: 14px 10px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 13px;
-      font-size: 14px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .proof-stat strong {
+      display: block;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .proof-stat span { color: var(--text-muted); font-size: 13px; }
+    .proof-credits {
       color: var(--text-muted);
+      text-align: center;
+      margin: 0 0 16px;
+      font-size: 14px;
+    }
+    .proof-credits strong { color: var(--text); }
+    .placements-artists-label {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+    .artist-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .artist-tag {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid #5e2b2b;
+      background: rgba(255, 43, 43, 0.1);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .artist-tag::after { display: none; }
+    .placements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .placement-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
       text-align: left;
+    }
+    .placement-card-featured {
+      border-color: #ff2b2b;
+      background: linear-gradient(180deg, rgba(255, 43, 43, 0.14), rgba(255, 255, 255, 0.03));
+    }
+    .placement-rank {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(255, 43, 43, 0.4);
+      border: 1px solid #8a2a2a;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .placement-card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .placement-artist {
+      margin: 0 0 4px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .placement-project {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .muso-link-wrap {
+      text-align: center;
+      margin-top: 4px;
+    }
+    .muso-link-wrap a { font-size: 14px; }
+    .activity-wrap {
+      margin-top: 8px;
+    }
+    .activity-wrap > h2 {
+      margin-bottom: 4px;
+    }
+    .activity-note {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin: 0 0 12px;
+    }
+    .activity-panels {
+      display: grid;
+      grid-template-columns: minmax(200px, 0.72fr) minmax(0, 1.28fr);
+      gap: 14px;
+      align-items: start;
+    }
+    .activity-panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: var(--shadow);
+    }
+    .activity-panel-head {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.22);
+    }
+    .activity-panel-head h3,
+    .activity-panel-head span {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .activity-panel--supporter {
+      border-color: #6a2a2a;
+    }
+    .activity-panel--supporter .activity-panel-head {
+      background: linear-gradient(100deg, rgba(255, 43, 43, 0.22), rgba(0, 0, 0, 0.25));
+      border-bottom-color: #5a2a2a;
+    }
+    .activity-panel--supporter .activity-panel-head span {
+      color: #ffb4b4;
+    }
+    .top-supporter-body {
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .top-supporter-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 0 0 3px;
+      line-height: 1.2;
+    }
+    .top-supporter-detail {
+      color: var(--text-muted);
+      font-size: 11px;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .activity-panel--customers .activity-panel-body {
+      padding: 0;
+    }
+    .sales-feed-scroll {
+      max-height: 132px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 43, 43, 0.45) rgba(255, 255, 255, 0.06);
+    }
+    .sales-feed-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sales-feed-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .sales-feed-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 43, 43, 0.45);
+      border-radius: 999px;
+    }
+    .sales-feed {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sales-feed li {
+      display: flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 10px;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 0;
+      background: transparent;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .sales-feed li:last-child {
+      border-bottom: 0;
+    }
+    .sales-feed li:nth-child(even) {
+      background: rgba(0, 0, 0, 0.12);
+    }
+    .sales-feed strong { color: var(--text); font-weight: 700; }
+    .sales-feed-index {
+      display: inline-block;
+      width: 1.4rem;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .sales-feed .sales-empty {
+      width: 100%;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 10px;
+      font-size: 12px;
+    }
+    .sales-empty {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin: 0;
     }
     .player-wrapper { margin: 30px 0; }
     .player-wrapper iframe {
@@ -183,18 +462,47 @@
       box-shadow: var(--shadow);
       background: #111111;
     }
-    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
     .plan {
+      position: relative;
       background: linear-gradient(180deg, rgba(255, 43, 43, 0.14), rgba(255, 255, 255, 0.04));
-      padding: 20px; border-radius: 14px;
-      text-align: center; border: 1px solid #5e2b2b;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid #5e2b2b;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       color: var(--text);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
     }
     .plan:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 36px rgba(120, 20, 20, 0.45);
+    }
+    .plan-featured {
+      border-color: #ff2b2b;
+      box-shadow: 0 12px 32px rgba(255, 43, 43, 0.22);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(100deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
     }
     .plan h3 { margin: 0; font-size: 18px; color: var(--text); }
     .plan .price {
@@ -207,7 +515,14 @@
       color: transparent;
     }
     .plan p { color: var(--text-muted); }
-    .plan ul { text-align: left; color: var(--text); list-style: none; padding: 0; }
+    .plan ul {
+      text-align: left;
+      color: var(--text);
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      flex: 1;
+    }
     .plan ul li { margin: 6px 0; position: relative; padding-left: 16px; }
     .plan ul li::before {
       content: "•";
@@ -216,6 +531,7 @@
       color: #ff6b6b;
       font-weight: 900;
     }
+    .plan .btn { width: 100%; margin-top: auto; }
     .notice {
       margin-top: 20px;
       padding: 12px;
@@ -225,6 +541,7 @@
       text-align: center;
       font-weight: 700;
       border-radius: 10px;
+      font-size: 14px;
     }
     .faq {
       margin-top: 48px;
@@ -260,7 +577,7 @@
       align-items: center;
       justify-content: center;
       padding: 16px;
-      z-index: 50;
+      z-index: 200;
     }
     .modal-backdrop.show { display: flex; }
     .modal {
@@ -296,7 +613,61 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    #store, #licenses, #contact { scroll-margin-top: 90px; }
+    .newsletter {
+      margin-top: 48px;
+      background: linear-gradient(165deg, rgba(255, 43, 43, 0.16), rgba(255, 255, 255, 0.04));
+      border: 1px solid #5a2e2e;
+      border-radius: 14px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .newsletter p {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 16px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 520px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .newsletter-form input[type="email"] {
+      flex: 1 1 220px;
+      min-width: 200px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid #5a5a5a;
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text);
+      font: inherit;
+    }
+    .newsletter-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      min-height: 1.2em;
+    }
+    .sticky-store-btn {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(140%);
+      z-index: 95;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 12px 28px rgba(255, 43, 43, 0.4);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .sticky-store-btn.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #store, #licenses, #contact, #newsletter, #proof, #store-player, #activity { scroll-margin-top: 90px; }
     footer {
       text-align: center;
       padding: 20px;
@@ -305,17 +676,55 @@
       margin-top: 44px;
       border-top: 1px solid var(--line);
     }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .footer-links a { font-size: 13px; }
     @media (max-width: 900px) {
-      .highlights { grid-template-columns: 1fr; }
+      .proof-stats,
+      .activity-panels,
+      .placements-grid { grid-template-columns: 1fr; }
       .player-wrapper iframe { height: 460px; }
       header { padding: 14px 16px; }
-      nav a { margin-left: 12px; font-size: 14px; }
       .logo img { height: 58px; }
+      .nav-toggle { display: inline-block; }
+      .site-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(280px, 85vw);
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 88px 24px 24px;
+        background: rgba(8, 8, 8, 0.98);
+        border-left: 1px solid var(--line);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 90;
+      }
+      .site-nav.open { transform: translateX(0); }
+      .site-nav a {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        margin: 0;
+        font-size: 15px;
+      }
+      .site-nav a::after { display: none; }
     }
     @media (max-width: 600px) {
       .player-wrapper iframe { height: 380px; }
       .container { padding: 28px 14px; }
-      nav a { margin-left: 10px; font-size: 13px; }
+      body.has-sticky-cta { padding-bottom: 76px; }
+    }
+    @media (min-width: 901px) {
+      .sticky-store-btn { display: none; }
     }
   </style>
 </head>
@@ -323,12 +732,15 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="logo">
-      <img src="New Project (1).png" alt="BMTB Logo">
+      <a href="#" aria-label="BMTB Store home">
+        <img src="bmtb-logo.png" alt="BMTB Logo" width="120" height="72">
+      </a>
     </div>
-    <nav>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav">
       <a href="#store">Store</a>
       <a href="#licenses">Licenses</a>
-      <a href="https://www.youtube.com/@YbnLilBroTypeBeats" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank" rel="noopener noreferrer">Drumkits</a>
       <a href="#contact">Contact</a>
@@ -337,24 +749,70 @@
 
   <main id="main" class="container">
     <section class="hero">
-      <h1>Exclusive Beats</h1>
-      <p>Instant delivery, secure checkout, and industry-ready quality.</p>
-      <div class="offer-badge">Buy 2, Get 1 Free</div>
+      <p class="hero-eyebrow">Welcome to</p>
+      <h1>BMTB Beat Store</h1>
+      <p class="hero-tagline">Beats By BankrollMadeThisBeat. Browse, Lease, or Go Exclusive.</p>
+      <div class="offer-badges">
+        <span class="offer-badge">Buy 2, Get 1 Free</span>
+        <span class="offer-badge">Buy 3, Get 2 Free</span>
+      </div>
+      <p class="offer-note">Both deals active on Basic License beats in the BeatStars store.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#store">Browse Beats</a>
         <a class="btn btn-secondary" href="#" id="exclusive-offer-btn">Make Exclusive Offer</a>
       </div>
-      <div class="highlights">
-        <div class="highlight">Instant digital delivery after checkout.</div>
-        <div class="highlight">Mix-ready files for serious artists.</div>
-        <div class="highlight">Direct producer support when needed.</div>
+    </section>
+
+    <section class="social-proof" id="proof" aria-label="Biggest placements">
+      <h2>Biggest Placements</h2>
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <strong>1255+</strong>
+          <span>Beats in catalog</span>
+        </div>
+        <div class="proof-stat">
+          <strong>Instant</strong>
+          <span>Digital delivery</span>
+        </div>
+      </div>
+      <div id="placements-block">
+        <div class="placements-grid" id="placements-grid"></div>
+        <p class="proof-credits placements-artists-label"><strong>Also produced for</strong></p>
+        <div class="artist-tags" id="artist-tags"></div>
+        <p class="muso-link-wrap"><a href="https://credits.muso.ai/profile/32bb0106-0fca-451f-84d6-1d09b609dd3f/credits" target="_blank" rel="noopener noreferrer">View full verified credits on Muso.AI →</a></p>
       </div>
     </section>
 
     <section id="store">
       <h2>Beat Store</h2>
-      <div class="player-wrapper">
+      <div class="player-wrapper" id="store-player">
         <iframe src="https://player.beatstars.com/?storeId=124564" title="BeatStars store player" loading="lazy" allow="autoplay"></iframe>
+      </div>
+    </section>
+
+    <section id="activity" class="activity-wrap" aria-label="Store activity">
+      <h2>Live Store Activity</h2>
+      <p class="activity-note">Updated weekly from BeatStars sales.</p>
+      <div class="activity-panels">
+        <aside class="activity-panel activity-panel--supporter" aria-label="Top supporter">
+          <div class="activity-panel-head">
+            <span id="top-supporter-label">Top Supporter</span>
+          </div>
+          <div class="top-supporter-body">
+            <p class="top-supporter-name" id="top-supporter-name">Loading...</p>
+            <p class="top-supporter-detail" id="top-supporter-detail"></p>
+          </div>
+        </aside>
+        <div class="activity-panel activity-panel--customers" aria-label="Recent customers">
+          <div class="activity-panel-head">
+            <h3>Recent Customers</h3>
+          </div>
+          <div class="activity-panel-body sales-feed-scroll">
+            <ul class="sales-feed" id="sales-feed">
+              <li class="sales-empty">Loading recent activity...</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -373,19 +831,22 @@
             <li>For Profit Live Performances</li>
             <li>Radio Broadcasting rights (2 Stations)</li>
           </ul>
+          <a class="btn btn-secondary" href="#store">Browse Beats</a>
         </div>
-        <div class="plan">
+        <div class="plan plan-featured">
+          <span class="plan-badge">Most Popular</span>
           <h3>Premium License</h3>
-          <div class="price">$75.00</div>
+          <div class="price">$100.00</div>
           <p>Tagged MP3 + tagged WAV included.</p>
           <ul>
             <li>Used for Music Recording</li>
-            <li>Distribute up to 3,000 copies</li>
-            <li>500,000 Online Audio Streams</li>
-            <li>1 Music Video</li>
+            <li>Distribute up to UNLIMITED copies</li>
+            <li>UNLIMITED Online Audio Streams</li>
+            <li>UNLIMITED Music Video</li>
             <li>For Profit Live Performances</li>
-            <li>Radio Broadcasting rights (2 Stations)</li>
+            <li>Radio Broadcasting rights (UNLIMITED Stations)</li>
           </ul>
+          <a class="btn btn-primary" href="#store">Browse Beats</a>
         </div>
         <div class="plan">
           <h3>Exclusive Rights</h3>
@@ -399,25 +860,51 @@
             <li>For Profit Live Performances</li>
             <li>Radio Broadcasting rights (UNLIMITED Stations)</li>
           </ul>
+          <a class="btn btn-secondary" href="#" id="exclusive-plan-btn">Request Exclusive</a>
         </div>
       </div>
-      <div class="notice">⚠️ NO REFUNDS ON ANY PURCHASES</div>
+      <div class="notice">All sales are final. Preview beats in the store before purchasing — no refunds on any purchases.</div>
     </section>
 
     <section class="faq" aria-label="Frequently asked questions">
       <h2>FAQ</h2>
       <details>
         <summary>How does Buy 2 Get 1 FREE work?</summary>
-        <p>Add 3 eligible beats to your cart and apply the promo in checkout if needed. If you need help, contact me directly.</p>
+        <p>Add 2 eligible Basic License beats to your cart in the BeatStars store and the third beat is free. The discount should apply automatically at checkout — if it doesn't, contact me directly.</p>
+      </details>
+      <details>
+        <summary>How does Buy 3 Get 2 FREE work?</summary>
+        <p>Add 3 eligible Basic License beats to your cart and get 2 free. The discount should apply automatically at checkout — if it doesn't, contact me directly.</p>
       </details>
       <details>
         <summary>How fast is delivery?</summary>
         <p>Delivery is instant after successful payment through the store checkout.</p>
       </details>
       <details>
-        <summary>Need custom production or a direct deal?</summary>
-        <p>Use the email below with your budget, style references, and timeline.</p>
+        <summary>What files do I get?</summary>
+        <p>File formats depend on the license you choose. Basic and Premium leases include tagged files for recording. Check each beat's listing in the store for exact deliverables.</p>
       </details>
+      <details>
+        <summary>How do exclusive purchases work?</summary>
+        <p>Submit an exclusive offer with the beat name and your budget. Once agreed and paid, you receive sole rights and the beat is removed from public sale.</p>
+      </details>
+      <details>
+        <summary>Need custom production or a direct deal?</summary>
+        <p>Use the contact form below with your budget, style references, and timeline.</p>
+      </details>
+    </section>
+
+    <section id="newsletter" class="newsletter" aria-label="Newsletter signup">
+      <h2>Get New Beat Drops</h2>
+      <p>Join the list for new releases, store sales, and exclusive beat alerts straight to your inbox.</p>
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+        <input type="hidden" name="_subject" value="Newsletter Signup - BMTB Store" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+      </form>
+      <div class="newsletter-status" id="newsletter-status" aria-live="polite"></div>
     </section>
 
     <section id="contact">
@@ -433,13 +920,13 @@
   <div class="modal-backdrop" id="inquiry-modal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="inquiry-title">
       <h3 id="inquiry-title">Send Inquiry</h3>
-      <p>Fill this out and your email app will open with your request pre-filled.</p>
+      <p id="inquiry-description">Fill out the form below and I'll get back to you as soon as possible.</p>
       <form id="inquiry-form" class="form-grid">
         <input type="text" id="inq-name" name="name" placeholder="Name" required />
         <input type="text" id="inq-beat" name="beat" placeholder="Beat name or link" required />
         <textarea id="inq-details" name="details" placeholder="Request details" required></textarea>
         <input type="text" id="inq-budget" name="budget" placeholder="Budget (optional)" />
-        <input type="hidden" name="_subject" value="New Beat Inquiry - BMTB Store" />
+        <input type="hidden" id="inq-subject" name="_subject" value="New Beat Inquiry - BMTB Store" />
         <input type="hidden" name="_captcha" value="false" />
         <div class="modal-actions">
           <button type="button" class="btn btn-secondary" id="inquiry-cancel">Cancel</button>
@@ -451,49 +938,250 @@
   </div>
 
   <footer>
+    <div class="footer-links">
+      <a href="#store">Store</a>
+      <a href="#licenses">Licenses</a>
+      <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank" rel="noopener noreferrer">Drumkits</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#contact">Contact</a>
+    </div>
     © <span id="year"></span> BankrollMadeThisBeat (BMTB). All rights reserved.
   </footer>
+
+  <a href="#store-player" class="btn btn-primary sticky-store-btn" id="sticky-store-btn" aria-hidden="true">Browse Beats</a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const exclusiveOfferBtn = document.getElementById('exclusive-offer-btn');
-    if (exclusiveOfferBtn) {
-      exclusiveOfferBtn.addEventListener('click', (event) => {
+    const stickyStoreBtn = document.getElementById('sticky-store-btn');
+    const heroSection = document.querySelector('.hero');
+
+    const updateStickyStoreBtn = () => {
+      if (!stickyStoreBtn || !heroSection || window.innerWidth > 900) {
+        if (stickyStoreBtn) {
+          stickyStoreBtn.classList.remove('show');
+          stickyStoreBtn.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('has-sticky-cta');
+        return;
+      }
+
+      const showSticky = window.scrollY > heroSection.offsetHeight;
+      stickyStoreBtn.classList.toggle('show', showSticky);
+      stickyStoreBtn.setAttribute('aria-hidden', String(!showSticky));
+      document.body.classList.toggle('has-sticky-cta', showSticky);
+    };
+
+    window.addEventListener('scroll', updateStickyStoreBtn, { passive: true });
+    window.addEventListener('resize', updateStickyStoreBtn);
+    updateStickyStoreBtn();
+
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterStatus = document.getElementById('newsletter-status');
+    const newsletterEndpoint = 'https://formsubmit.co/ajax/bankrollmadethisbeat@gmail.com';
+
+    if (newsletterForm && newsletterStatus) {
+      newsletterForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        alert('Please pick a beat first, then submit your exclusive offer request.');
-        window.location.href = 'mailto:bankrollmadethisbeat@gmail.com?subject=Exclusive%20Beat%20Offer&body=Beat%20name%2Flink%3A%20%0AOffer%20amount%3A%20%0AMessage%3A%20';
+        newsletterStatus.textContent = 'Subscribing...';
+
+        fetch(newsletterEndpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(newsletterForm)
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error('Failed to subscribe');
+            return response.json();
+          })
+          .then(() => {
+            newsletterStatus.textContent = "You're on the list. New beat drops coming soon.";
+            newsletterForm.reset();
+          })
+          .catch(() => {
+            const email = document.getElementById('newsletter-email').value.trim();
+            newsletterStatus.textContent = 'Could not subscribe here. Opening your email app...';
+            window.location.href = `mailto:bankrollmadethisbeat@gmail.com?subject=${encodeURIComponent('Newsletter Signup - BMTB Store')}&body=${encodeURIComponent(`Please add me to the BMTB newsletter: ${email}`)}`;
+          });
+      });
+    }
+
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+
+    const closeMobileNav = () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    };
+
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('nav-open', isOpen);
+      });
+
+      siteNav.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', closeMobileNav);
       });
     }
 
     const inquiryModal = document.getElementById('inquiry-modal');
+    const inquiryTitle = document.getElementById('inquiry-title');
+    const inquiryDescription = document.getElementById('inquiry-description');
+    const inquirySubject = document.getElementById('inq-subject');
+    const inquiryBeat = document.getElementById('inq-beat');
+    const inquiryDetails = document.getElementById('inq-details');
     const sendInquiryBtn = document.getElementById('send-inquiry-btn');
     const contactEmailLink = document.getElementById('contact-email-link');
     const inquiryCancel = document.getElementById('inquiry-cancel');
     const inquiryForm = document.getElementById('inquiry-form');
     const inquiryStatus = document.getElementById('inquiry-status');
     const inquirySubmitEndpoint = 'https://formsubmit.co/ajax/bankrollmadethisbeat@gmail.com';
+    const formSubmitEndpoint = inquirySubmitEndpoint;
 
-    const openInquiryModal = () => {
+    const loadStoreActivity = async () => {
+      const feed = document.getElementById('sales-feed');
+      const topName = document.getElementById('top-supporter-name');
+      const topDetail = document.getElementById('top-supporter-detail');
+      const topLabel = document.getElementById('top-supporter-label');
+
+      if (!feed || !topName) return;
+
+      try {
+        const response = await fetch('data/store-activity.json');
+        const activity = await response.json();
+
+        if (topLabel && activity.monthLabel) {
+          topLabel.textContent = `Top Supporter — ${activity.monthLabel}`;
+        }
+        if (activity.topSupporter) {
+          topName.textContent = activity.topSupporter.name || '—';
+          if (topDetail) topDetail.textContent = activity.topSupporter.detail || '';
+        }
+
+        const purchases = activity.recentPurchases || activity.monthSales || [];
+        if (!purchases.length) {
+          feed.innerHTML = '<li class="sales-empty">No sales this month yet.</li>';
+          return;
+        }
+
+        feed.innerHTML = purchases.map((sale, index) => `
+          <li><span class="sales-feed-index">${index + 1}.</span> <strong>${sale.customer}</strong></li>
+        `).join('');
+      } catch {
+        feed.innerHTML = '<li class="sales-empty">Activity feed unavailable right now.</li>';
+        topName.textContent = 'Unavailable';
+      }
+    };
+
+    loadStoreActivity();
+
+    const loadPlacements = async () => {
+      const tags = document.getElementById('artist-tags');
+      const grid = document.getElementById('placements-grid');
+      const musoLink = document.querySelector('.muso-link-wrap a');
+
+      if (!tags || !grid) return;
+
+      try {
+        const response = await fetch('data/placements.json');
+        const data = await response.json();
+
+        const artists = data.featuredArtists || [];
+        tags.innerHTML = artists.map((artist) => `<span class="artist-tag">${artist}</span>`).join('');
+
+        const placements = (data.placements || []).sort((a, b) => (a.rank || 99) - (b.rank || 99));
+        grid.innerHTML = placements.length
+          ? placements.map((item, index) => `
+              <article class="placement-card${index === 0 ? ' placement-card-featured' : ''}">
+                <span class="placement-rank">#${item.rank || index + 1} Placement</span>
+                <h3>${item.song}</h3>
+                <p class="placement-artist">${item.artist}</p>
+                <p class="placement-project">${item.project}</p>
+              </article>
+            `).join('')
+          : '<p class="sales-empty">Placements will appear here soon.</p>';
+
+        if (musoLink && data.musoProfileUrl) {
+          musoLink.href = data.musoProfileUrl;
+        }
+      } catch {
+        tags.innerHTML = '';
+        grid.innerHTML = '';
+      }
+    };
+
+    loadPlacements();
+
+    const defaultInquiry = {
+      title: 'Send Inquiry',
+      description: "Fill out the form below and I'll get back to you as soon as possible.",
+      subject: 'New Beat Inquiry - BMTB Store',
+      beatPlaceholder: 'Beat name or link',
+      detailsPlaceholder: 'Request details',
+      detailsValue: ''
+    };
+
+    const exclusiveInquiry = {
+      title: 'Make Exclusive Offer',
+      description: 'Pick a beat from the store, then submit your offer amount and any details.',
+      subject: 'Exclusive Beat Offer - BMTB Store',
+      beatPlaceholder: 'Beat name or BeatStars link',
+      detailsPlaceholder: 'Offer amount and message',
+      detailsValue: 'Offer amount: \n\nAdditional details:'
+    };
+
+    const openInquiryModal = (mode = 'default') => {
+      const config = mode === 'exclusive' ? exclusiveInquiry : defaultInquiry;
+      inquiryTitle.textContent = config.title;
+      inquiryDescription.textContent = config.description;
+      inquirySubject.value = config.subject;
+      inquiryBeat.placeholder = config.beatPlaceholder;
+      inquiryDetails.placeholder = config.detailsPlaceholder;
+      inquiryDetails.value = config.detailsValue;
+      inquiryStatus.textContent = '';
       inquiryModal.classList.add('show');
       inquiryModal.setAttribute('aria-hidden', 'false');
+      document.getElementById('inq-name').focus();
     };
 
     const closeInquiryModal = () => {
       inquiryModal.classList.remove('show');
       inquiryModal.setAttribute('aria-hidden', 'true');
+      inquiryForm.reset();
+      inquiryTitle.textContent = defaultInquiry.title;
+      inquiryDescription.textContent = defaultInquiry.description;
+      inquirySubject.value = defaultInquiry.subject;
+      inquiryBeat.placeholder = defaultInquiry.beatPlaceholder;
+      inquiryDetails.placeholder = defaultInquiry.detailsPlaceholder;
     };
+
+    const exclusiveOfferBtn = document.getElementById('exclusive-offer-btn');
+    const exclusivePlanBtn = document.getElementById('exclusive-plan-btn');
+
+    [exclusiveOfferBtn, exclusivePlanBtn].forEach((btn) => {
+      if (btn) {
+        btn.addEventListener('click', (event) => {
+          event.preventDefault();
+          openInquiryModal('exclusive');
+        });
+      }
+    });
 
     if (sendInquiryBtn && inquiryModal && inquiryForm) {
       sendInquiryBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        openInquiryModal();
+        openInquiryModal('default');
       });
 
       if (contactEmailLink) {
         contactEmailLink.addEventListener('click', (event) => {
           event.preventDefault();
-          openInquiryModal();
+          openInquiryModal('default');
         });
       }
 
@@ -505,9 +1193,14 @@
         inquiryCancel.addEventListener('click', closeInquiryModal);
       }
 
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && inquiryModal.classList.contains('show')) {
+          closeInquiryModal();
+        }
+      });
+
       inquiryForm.addEventListener('submit', (event) => {
         event.preventDefault();
-
         inquiryStatus.textContent = 'Sending...';
 
         const formData = new FormData(inquiryForm);
@@ -531,16 +1224,17 @@
           .catch(() => {
             inquiryStatus.textContent = 'Could not send here. Opening your email app as backup...';
             const name = document.getElementById('inq-name').value.trim();
-            const beat = document.getElementById('inq-beat').value.trim();
-            const details = document.getElementById('inq-details').value.trim();
+            const beat = inquiryBeat.value.trim();
+            const details = inquiryDetails.value.trim();
             const budget = document.getElementById('inq-budget').value.trim();
+            const subject = inquirySubject.value;
             const bodyLines = [
               `Name: ${name}`,
               `Beat name/link: ${beat}`,
               `Request details: ${details}`,
               `Budget (optional): ${budget || 'N/A'}`
             ];
-            const mailto = `mailto:bankrollmadethisbeat@gmail.com?subject=${encodeURIComponent('Beat Inquiry')}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+            const mailto = `mailto:bankrollmadethisbeat@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
             window.location.href = mailto;
           });
       });

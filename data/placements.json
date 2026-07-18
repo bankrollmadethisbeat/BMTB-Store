@@ -1,0 +1,34 @@
+{
+  "musoProfileUrl": "https://credits.muso.ai/profile/32bb0106-0fca-451f-84d6-1d09b609dd3f/credits",
+  "featuredArtists": [
+    "Babyface Ray",
+    "414JungleBaby",
+    "Ball Hog g",
+    "BabyChiefDoit",
+    "Rockout Danny",
+    "BabyTron",
+    "Skilla Baby",
+    "Mozzy",
+    "Cash Kidd"
+  ],
+  "placements": [
+    {
+      "rank": 1,
+      "song": "She In Love wit a Dumper",
+      "artist": "Ball Hog g",
+      "project": "Producer, Programmer"
+    },
+    {
+      "rank": 2,
+      "song": "Yo Baby",
+      "artist": "414JungleBaby",
+      "project": "Producer · 300 Entertainment"
+    },
+    {
+      "rank": 3,
+      "song": "Rich Guys",
+      "artist": "BabyChiefDoit, Babyface Ray",
+      "project": "Producer"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "monthLabel": "July 2026",
+  "updatedAt": "2026-07-18",
+  "salesSummary": {
+    "itemsSold": 277,
+    "gross": "$15,672",
+    "net": "$14,181"
+  },
+  "topSupporter": {
+    "name": "Bryan L.",
+    "detail": "14 beats licensed · BeatStars customer"
+  },
+  "recentPurchases": [
+    { "customer": "Tijuan W." },
+    { "customer": "Brandon B." },
+    { "customer": "Chase D." },
+    { "customer": "Biig R." },
+    { "customer": "Ebony J." },
+    { "customer": "Ira C." },
+    { "customer": "Jassiem K." },
+    { "customer": "Mieco T." },
+    { "customer": "DeAndre A." },
+    { "customer": "stanado b." },
+    { "customer": "Darius S." },
+    { "customer": "Trayvon B." }
+  ]
+}
