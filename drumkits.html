@@ -130,8 +130,6 @@
       cursor: pointer;
     }
     .btn:hover { background: var(--brand-dark); }
-    .paypal-buy { margin-top: auto; }
-    .paypal-buy .btn { width: 100%; margin-top: 0; }
     footer {
       padding: 22px 28px 28px;
       border-top: 1px solid var(--line);
@@ -170,7 +168,7 @@
   </header>
   <main>
     <h1>Drumkits</h1>
-    <p class="lead">Stashkit 2025 is $20 through PayPal. The rest are free. Loops inside Stashkit use the <a href="loopkits.html#terms">loopkit split</a>.</p>
+    <p class="lead">Stashkit 2025 is $20 on Gumroad. The rest are free. Loops inside Stashkit use the <a href="loopkits.html#terms">loopkit split</a>.</p>
     <div class="kit-grid">
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/stashkit.jpg" alt="Bankroll Stashkit 2025 cover">
@@ -179,21 +177,7 @@
         <p class="kit-price">$20.00</p>
         <p>Drums, 808s, loops, and soundfonts.</p>
         <p class="kit-meta">15 folders · 137 files · 256 MB</p>
-        <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
-          <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
-          <input type="hidden" name="item_number" value="stashkit-2025">
-          <input type="hidden" name="amount" value="20.00">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="no_shipping" value="1">
-          <input type="hidden" name="no_note" value="1">
-          <input type="hidden" name="rm" value="1">
-          <input type="hidden" name="cbt" value="Download Stashkit">
-          <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
-          <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/drumkits.html">
-          <button class="btn" type="submit">Pay $20 with PayPal</button>
-        </form>
+        <a class="btn" href="https://bankrollmadethisbeat.gumroad.com/l/bankrollstashkit" target="_blank" rel="noopener noreferrer">Buy on Gumroad</a>
         </div>
       </article>
       <article class="kit-card">
