@@ -64,8 +64,8 @@
     .kit-card {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 20px 18px 18px;
+      padding: 0 0 16px;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-top: 2px solid var(--brand);
       border-radius: 18px;
@@ -74,13 +74,28 @@
     .kit-cover {
       width: 100%;
       aspect-ratio: 1;
-      object-fit: contain;
-      background: #111111;
-      border-radius: 12px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .kit-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      padding: 14px 16px 0;
     }
     .kit-card h2 { margin: 0; font-family: var(--display); font-size: 1.35rem; letter-spacing: -0.04em; }
     .kit-card p { margin: 0; color: var(--text-muted); font-size: 14px; }
-    .kit-price {
+    .kit-card .kit-meta {
+      margin: 0;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .kit-card .kit-price {
       margin: 0;
       font-family: var(--display);
       font-size: 2rem;
@@ -131,31 +146,43 @@
     <div class="kit-grid">
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/loops-vol-1.png" alt="Bankroll Made These Loops Vol. 1 cover">
+        <div class="kit-body">
         <h2>Bankroll Made These Loops Vol. 1</h2>
         <p class="kit-price">Free</p>
-        <p>Loops. 1.4 GB zip.</p>
+        <p>Loops and stem packs.</p>
+        <p class="kit-meta">31 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-1.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/loops-vol-2.jpg" alt="Bankroll Made These Loops Vol. 2 cover">
+        <div class="kit-body">
         <h2>Bankroll Made These Loops Vol. 2</h2>
         <p class="kit-price">Free</p>
-        <p>Loops. 32 MB zip.</p>
+        <p>Loops.</p>
+        <p class="kit-meta">15 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-2.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/ghetto-gospel.png" alt="Ghetto Gospel Loopkit cover">
+        <div class="kit-body">
         <h2>Ghetto Gospel Loopkit</h2>
         <p class="kit-price">Free</p>
-        <p>Loops. 47 MB zip.</p>
+        <p>Gospel loops.</p>
+        <p class="kit-meta">15 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Ghetto-Gospel-Loopkit.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/michigan-mozart.png" alt="Michigan Mozart cover">
+        <div class="kit-body">
         <h2>Michigan Mozart</h2>
         <p class="kit-price">Free</p>
-        <p>Loops. 48 MB zip.</p>
+        <p>Detroit loops.</p>
+        <p class="kit-meta">12 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Michigan-Mozart-Loopkit.zip">Download zip</a>
+        </div>
       </article>
     </div>
   </main>

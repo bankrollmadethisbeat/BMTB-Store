@@ -64,8 +64,8 @@
     .kit-card {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 20px 18px 18px;
+      padding: 0 0 16px;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-top: 2px solid var(--brand);
       border-radius: 18px;
@@ -74,13 +74,28 @@
     .kit-cover {
       width: 100%;
       aspect-ratio: 1;
-      object-fit: contain;
-      background: #111111;
-      border-radius: 12px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .kit-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      padding: 14px 16px 0;
     }
     .kit-card h2 { margin: 0; font-family: var(--display); font-size: 1.35rem; letter-spacing: -0.04em; }
     .kit-card p { margin: 0; color: var(--text-muted); font-size: 14px; }
-    .kit-price {
+    .kit-card .kit-meta {
+      margin: 0;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .kit-card .kit-price {
       margin: 0;
       font-family: var(--display);
       font-size: 2rem;
@@ -105,7 +120,7 @@
     }
     .btn:hover { background: var(--brand-dark); }
     .paypal-buy { margin-top: auto; }
-    .paypal-buy .btn { width: 100%; }
+    .paypal-buy .btn { width: 100%; margin-top: 0; }
     footer {
       padding: 22px 28px 28px;
       border-top: 1px solid var(--line);
@@ -136,9 +151,11 @@
     <div class="kit-grid">
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/stashkit.jpg" alt="Bankroll Stashkit 2025 cover">
+        <div class="kit-body">
         <h2>Bankroll Stashkit 2025</h2>
         <p class="kit-price">$20.00</p>
-        <p>808s, drums, loops, MIDI, FX chains, and soundfonts. 256 MB zip.</p>
+        <p>Drums, 808s, loops, and soundfonts.</p>
+        <p class="kit-meta">129 files</p>
         <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
@@ -151,41 +168,57 @@
           <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/drumkits.html">
           <button class="btn" type="submit">Pay $20 with PayPal</button>
         </form>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/welcome-vol-1.jpg" alt="Welcome 2 Detroit Vol. 1 cover">
+        <div class="kit-body">
         <h2>Welcome 2 Detroit</h2>
         <p class="kit-price">Free</p>
-        <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
+        <p>Drums, loops, and MIDI.</p>
+        <p class="kit-meta">166 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/welcome-vol-2.jpg" alt="Welcome 2 Detroit Vol. 2 cover">
+        <div class="kit-body">
         <h2>Welcome 2 Detroit Vol. 2</h2>
         <p class="kit-price">Free</p>
-        <p>Drums and MIDI. 230 MB zip.</p>
+        <p>Drums and MIDI.</p>
+        <p class="kit-meta">720 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/welcome-vol-3.jpg" alt="Welcome 2 Detroit Vol. 3 cover">
+        <div class="kit-body">
         <h2>Welcome 2 Detroit Vol. 3</h2>
         <p class="kit-price">Free</p>
-        <p>One-shots, 808s, percussion, FX, and extra sounds. 1.2 GB zip.</p>
+        <p>One-shots, 808s, and FX.</p>
+        <p class="kit-meta">620 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/mega-bank.png" alt="Detroit MegaBank cover">
+        <div class="kit-body">
         <h2>Detroit MegaBank</h2>
         <p class="kit-price">Free</p>
-        <p>300 Detroit sounds and soundfonts. 273 MB zip.</p>
+        <p>Detroit soundfonts.</p>
+        <p class="kit-meta">33 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/detroit-megabankover-300-detroit-sounds_94429.zip">Download zip</a>
+        </div>
       </article>
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/dead-zone.png" alt="Dead Zone Drumkit cover">
+        <div class="kit-body">
         <h2>Dead Zone Drumkit</h2>
         <p class="kit-price">Free</p>
-        <p>2022 drumkit. 300 MB zip.</p>
+        <p>Drums and soundfonts.</p>
+        <p class="kit-meta">134 files</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/dead-zone-drumkit-2022_125690.zip">Download zip</a>
+        </div>
       </article>
     </div>
   </main>
