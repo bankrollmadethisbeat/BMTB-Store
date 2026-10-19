@@ -14,12 +14,34 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 18px;
       background: #000000;
       color: #ffffff;
       font-family: Manrope, system-ui, sans-serif;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .logo img { height: 56px; width: auto; display: block; }
+    nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 16px; margin-left: auto; }
+    nav a {
+      color: #d3d3d3;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    nav a:hover { color: #ffffff; }
+    .page {
+      min-height: calc(100vh - 86px);
+      display: grid;
+      place-items: center;
+      padding: 32px 18px;
     }
     main {
       width: min(520px, 100%);
@@ -58,11 +80,28 @@
   </style>
 </head>
 <body>
+  <header>
+    <a class="logo" href="/" aria-label="BMTB Store home">
+      <img src="bmtb-logo.png" alt="BMTB Logo" width="120" height="72">
+    </a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#store">Store</a>
+      <a href="/#licenses">Licenses</a>
+      <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="drumkits.html">Drumkits</a>
+      <a href="loopkits.html">Loopkits</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="page">
   <main>
     <h1>Bankroll Stashkit 2025</h1>
     <p>Thanks for the purchase. Save the zip, then unzip it. You get 808s, drums, loops, MIDI, FX chains, and soundfonts.</p>
     <p><a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/stashkit-2025/Bankroll-Stashkit-2025.zip">Download zip</a></p>
-    <a class="back" href="/#drumkits">Back to the store</a>
+    <a class="back" href="drumkits.html">Back to drumkits</a>
   </main>
+  </div>
 </body>
 </html>
