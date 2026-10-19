@@ -949,7 +949,8 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <button type="button" data-open-kits aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
+      <button type="button" data-open-panel="kits-backdrop" aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
+      <button type="button" data-open-panel="loops-backdrop" aria-expanded="false" aria-controls="loops-panel">Loopkits</button>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1085,7 +1086,7 @@
       <div class="kits-panel" id="kits-panel" role="dialog" aria-modal="true" aria-labelledby="kits-title">
         <div class="kits-head">
           <h2 id="kits-title">Drumkits</h2>
-          <button type="button" class="kits-close" id="kits-close">Close</button>
+          <button type="button" class="kits-close" data-close-panel>Close</button>
         </div>
         <div class="kit-grid">
           <article class="kit-card">
@@ -1134,6 +1135,41 @@
             <p class="kit-price">Free</p>
             <p>2022 drumkit. 300 MB zip.</p>
             <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/dead-zone-drumkit-2022_125690.zip">Download zip</a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="kits-backdrop" id="loops-backdrop">
+      <div class="kits-panel" id="loops-panel" role="dialog" aria-modal="true" aria-labelledby="loops-title">
+        <div class="kits-head">
+          <h2 id="loops-title">Loopkits</h2>
+          <button type="button" class="kits-close" data-close-panel>Close</button>
+        </div>
+        <div class="kit-grid">
+          <article class="kit-card">
+            <h3>Bankroll Made These Loops Vol. 1</h3>
+            <p class="kit-price">Free</p>
+            <p>Loops. 1.4 GB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-1.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Bankroll Made These Loops Vol. 2</h3>
+            <p class="kit-price">Free</p>
+            <p>Loops. 32 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-2.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Ghetto Gospel Loopkit</h3>
+            <p class="kit-price">Free</p>
+            <p>Loops. 47 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Ghetto-Gospel-Loopkit.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Michigan Mozart</h3>
+            <p class="kit-price">Free</p>
+            <p>Loops. 48 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Michigan-Mozart-Loopkit.zip">Download zip</a>
           </article>
         </div>
       </div>
@@ -1216,7 +1252,8 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <button type="button" data-open-kits aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
+      <button type="button" data-open-panel="kits-backdrop" aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
+      <button type="button" data-open-panel="loops-backdrop" aria-expanded="false" aria-controls="loops-panel">Loopkits</button>
       <a href="#newsletter">Newsletter</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1385,43 +1422,52 @@
       });
     }
 
-    const kitsBackdrop = document.getElementById('kits-backdrop');
-    const kitsClose = document.getElementById('kits-close');
-    const openKitsButtons = document.querySelectorAll('[data-open-kits]');
-
-    const openKits = () => {
-      if (!kitsBackdrop) return;
-      kitsBackdrop.classList.add('show');
+    const openPanel = (backdrop) => {
+      document.querySelectorAll('.kits-backdrop.show').forEach((open) => {
+        if (open !== backdrop) closePanel(open);
+      });
+      backdrop.classList.add('show');
       document.body.classList.add('kits-open');
-      openKitsButtons.forEach((button) => button.setAttribute('aria-expanded', 'true'));
-      if (kitsClose) kitsClose.focus();
+      document.querySelectorAll(`[data-open-panel="${backdrop.id}"]`).forEach((button) => {
+        button.setAttribute('aria-expanded', 'true');
+      });
+      const closeButton = backdrop.querySelector('[data-close-panel]');
+      if (closeButton) closeButton.focus();
     };
 
-    const closeKits = () => {
-      if (!kitsBackdrop) return;
-      kitsBackdrop.classList.remove('show');
+    const closePanel = (backdrop) => {
+      backdrop.classList.remove('show');
       document.body.classList.remove('kits-open');
-      openKitsButtons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
-      if (location.hash === '#drumkits') history.replaceState(null, '', location.pathname + location.search);
+      document.querySelectorAll(`[data-open-panel="${backdrop.id}"]`).forEach((button) => {
+        button.setAttribute('aria-expanded', 'false');
+      });
     };
 
-    openKitsButtons.forEach((button) => {
+    document.querySelectorAll('[data-open-panel]').forEach((button) => {
       button.addEventListener('click', () => {
+        const backdrop = document.getElementById(button.getAttribute('data-open-panel'));
+        if (!backdrop) return;
         closeMobileNav();
-        openKits();
+        openPanel(backdrop);
       });
     });
 
-    if (kitsBackdrop) {
-      kitsBackdrop.addEventListener('click', (event) => {
-        if (event.target === kitsBackdrop) closeKits();
+    document.querySelectorAll('.kits-backdrop').forEach((backdrop) => {
+      backdrop.addEventListener('click', (event) => {
+        if (event.target === backdrop) closePanel(backdrop);
       });
-    }
-    if (kitsClose) kitsClose.addEventListener('click', closeKits);
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && kitsBackdrop && kitsBackdrop.classList.contains('show')) closeKits();
+      const closeButton = backdrop.querySelector('[data-close-panel]');
+      if (closeButton) closeButton.addEventListener('click', () => closePanel(backdrop));
     });
-    if (location.hash === '#drumkits') openKits();
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      document.querySelectorAll('.kits-backdrop.show').forEach(closePanel);
+    });
+
+    const hashPanels = { '#drumkits': 'kits-backdrop', '#loopkits': 'loops-backdrop' };
+    const hashedPanel = document.getElementById(hashPanels[location.hash] || '');
+    if (hashedPanel) openPanel(hashedPanel);
 
     const inquiryModal = document.getElementById('inquiry-modal');
     const inquiryTitle = document.getElementById('inquiry-title');
