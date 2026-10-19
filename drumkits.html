@@ -55,6 +55,7 @@
       letter-spacing: -0.04em;
     }
     .lead { margin: 0; color: var(--text-muted); }
+    .lead a { color: var(--text); text-decoration: underline; }
     .kit-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -169,7 +170,7 @@
   </header>
   <main>
     <h1>Drumkits</h1>
-    <p class="lead">Stashkit 2025 is $20 through PayPal. The rest are free.</p>
+    <p class="lead">Stashkit 2025 is $20 through PayPal. The rest are free. Loops inside Stashkit use the <a href="loopkits.html#terms">loopkit split</a>.</p>
     <div class="kit-grid">
       <article class="kit-card">
         <img class="kit-cover" src="images/kits/stashkit.jpg" alt="Bankroll Stashkit 2025 cover">
@@ -177,15 +178,18 @@
         <h2>Bankroll Stashkit 2025</h2>
         <p class="kit-price">$20.00</p>
         <p>Drums, 808s, loops, and soundfonts.</p>
-        <p class="kit-meta">15 folders · 137 files</p>
+        <p class="kit-meta">15 folders · 137 files · 256 MB</p>
         <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
           <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
+          <input type="hidden" name="item_number" value="stashkit-2025">
           <input type="hidden" name="amount" value="20.00">
           <input type="hidden" name="currency_code" value="USD">
           <input type="hidden" name="no_shipping" value="1">
+          <input type="hidden" name="no_note" value="1">
           <input type="hidden" name="rm" value="1">
+          <input type="hidden" name="cbt" value="Download Stashkit">
           <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
           <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/drumkits.html">
           <button class="btn" type="submit">Pay $20 with PayPal</button>
@@ -198,7 +202,7 @@
         <h2>Welcome 2 Detroit</h2>
         <p class="kit-price">Free</p>
         <p>Drums, loops, and MIDI.</p>
-        <p class="kit-meta">13 folders · 167 files</p>
+        <p class="kit-meta">13 folders · 167 files · 127 MB</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
         </div>
       </article>
@@ -208,7 +212,7 @@
         <h2>Welcome 2 Detroit Vol. 2</h2>
         <p class="kit-price">Free</p>
         <p>Drums and MIDI.</p>
-        <p class="kit-meta">37 folders · 721 files</p>
+        <p class="kit-meta">37 folders · 721 files · 230 MB</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
         </div>
       </article>
@@ -218,7 +222,7 @@
         <h2>Welcome 2 Detroit Vol. 3</h2>
         <p class="kit-price">Free</p>
         <p>One-shots, 808s, and FX.</p>
-        <p class="kit-meta">18 folders · 621 files</p>
+        <p class="kit-meta">18 folders · 621 files · 1.19 GB</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
         </div>
       </article>
@@ -228,7 +232,7 @@
         <h2>Detroit MegaBank</h2>
         <p class="kit-price">Free</p>
         <p>Detroit soundfonts.</p>
-        <p class="kit-meta">2 folders · 34 files</p>
+        <p class="kit-meta">2 folders · 34 files · 273 MB</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/detroit-megabankover-300-detroit-sounds_94429.zip">Download zip</a>
         </div>
       </article>
@@ -238,7 +242,7 @@
         <h2>Dead Zone Drumkit</h2>
         <p class="kit-price">Free</p>
         <p>Drums and soundfonts.</p>
-        <p class="kit-meta">11 folders · 135 files</p>
+        <p class="kit-meta">11 folders · 135 files · 300 MB</p>
         <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/dead-zone-drumkit-2022_125690.zip">Download zip</a>
         </div>
       </article>

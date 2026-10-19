@@ -717,6 +717,13 @@
       font-size: 13px;
       color: var(--text-muted);
     }
+    .hp {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
     .newsletter {
       margin-top: 56px;
       background: transparent;
@@ -916,8 +923,8 @@
     </section>
 
     <section id="activity" class="activity-wrap" aria-label="Store activity">
-      <h2>Live Store Activity</h2>
-      <p class="activity-note">Updated weekly from BeatStars sales.</p>
+      <h2>Store Activity</h2>
+      <p class="activity-note" id="activity-note">BeatStars sales.</p>
       <div class="activity-panels">
         <aside class="activity-panel activity-panel--supporter" aria-label="Top supporter">
           <div class="activity-panel-head">
@@ -1020,6 +1027,7 @@
       <h2>Get New Beat Drops</h2>
       <p>Join the list for new releases, store sales, and exclusive beat alerts straight to your inbox.</p>
       <form id="newsletter-form" class="newsletter-form">
+        <input type="text" name="_honey" autocomplete="off" tabindex="-1" class="hp" aria-hidden="true">
         <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required autocomplete="email" />
         <button type="submit" class="btn btn-primary">Subscribe</button>
         <input type="hidden" name="_subject" value="Newsletter Signup - BMTB Store" />
@@ -1032,7 +1040,7 @@
     <section id="contact">
       <h2>Contact</h2>
       <div class="contact-card">
-        <p>Email: <a href="#" id="contact-email-link">bankrollmadethisbeat@gmail.com</a></p>
+        <p>Email: <a href="mailto:bankrollmadethisbeat@gmail.com">bankrollmadethisbeat@gmail.com</a></p>
         <p>Business Hours: Mon-Sat, 10AM-8PM ET</p>
         <a class="btn btn-primary" href="#" id="send-inquiry-btn">Send Inquiry</a>
       </div>
@@ -1044,7 +1052,9 @@
       <h3 id="inquiry-title">Send Inquiry</h3>
       <p id="inquiry-description">Fill out the form below and I'll get back to you as soon as possible.</p>
       <form id="inquiry-form" class="form-grid">
+        <input type="text" name="_honey" autocomplete="off" tabindex="-1" class="hp" aria-hidden="true">
         <input type="text" id="inq-name" name="name" placeholder="Name" required />
+        <input type="email" id="inq-email" name="email" placeholder="Email" required autocomplete="email" />
         <input type="text" id="inq-beat" name="beat" placeholder="Beat name or link" required />
         <textarea id="inq-details" name="details" placeholder="Request details" required></textarea>
         <input type="text" id="inq-budget" name="budget" placeholder="Budget (optional)" />
@@ -1245,7 +1255,6 @@
     const inquiryBeat = document.getElementById('inq-beat');
     const inquiryDetails = document.getElementById('inq-details');
     const sendInquiryBtn = document.getElementById('send-inquiry-btn');
-    const contactEmailLink = document.getElementById('contact-email-link');
     const inquiryCancel = document.getElementById('inquiry-cancel');
     const inquiryForm = document.getElementById('inquiry-form');
     const inquiryStatus = document.getElementById('inquiry-status');
@@ -1264,6 +1273,14 @@
         const response = await fetch('data/store-activity.json');
         const activity = await response.json();
 
+        const activityNote = document.getElementById('activity-note');
+        if (activityNote && activity.updatedAt) {
+          const parsed = new Date(`${activity.updatedAt}T00:00:00`);
+          const through = Number.isNaN(parsed.getTime())
+            ? activity.updatedAt
+            : parsed.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+          activityNote.textContent = `BeatStars sales through ${through}.`;
+        }
         if (topLabel && activity.monthLabel) {
           topLabel.textContent = `Top Supporter — ${activity.monthLabel}`;
         }
@@ -1387,13 +1404,6 @@
         openInquiryModal('default');
       });
 
-      if (contactEmailLink) {
-        contactEmailLink.addEventListener('click', (event) => {
-          event.preventDefault();
-          openInquiryModal('default');
-        });
-      }
-
       inquiryModal.addEventListener('click', (event) => {
         if (event.target === inquiryModal) closeInquiryModal();
       });
@@ -1433,12 +1443,14 @@
           .catch(() => {
             inquiryStatus.textContent = 'Could not send here. Opening your email app as backup...';
             const name = document.getElementById('inq-name').value.trim();
+            const email = document.getElementById('inq-email').value.trim();
             const beat = inquiryBeat.value.trim();
             const details = inquiryDetails.value.trim();
             const budget = document.getElementById('inq-budget').value.trim();
             const subject = inquirySubject.value;
             const bodyLines = [
               `Name: ${name}`,
+              `Email: ${email}`,
               `Beat name/link: ${beat}`,
               `Request details: ${details}`,
               `Budget (optional): ${budget || 'N/A'}`
