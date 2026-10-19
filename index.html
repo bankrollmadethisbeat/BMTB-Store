@@ -799,6 +799,14 @@
       margin-top: auto;
       text-align: center;
     }
+    .kit-price {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+    .paypal-buy { margin-top: auto; }
+    .paypal-buy .btn { width: 100%; }
     #drumkits { margin-top: 56px; }
     footer {
       text-align: left;
@@ -1012,10 +1020,27 @@
       <div class="notice">Copy, stream, radio, and video limits are the amounts in the BeatStars contract you accept at checkout. All sales are final.</div>
     </section>
 
-    <section id="drumkits" aria-label="Free drumkits">
-      <h2>Free Drumkits</h2>
-      <p class="activity-note">Free download. No email and no checkout.</p>
+    <section id="drumkits" aria-label="Drumkits">
+      <h2>Drumkits</h2>
+      <p class="activity-note">Welcome 2 Detroit kits are free. Stashkit 2025 is $20 through PayPal.</p>
       <div class="kit-grid">
+        <article class="kit-card">
+          <h3>Bankroll Stashkit 2025</h3>
+          <p class="kit-price">$20.00</p>
+          <p>808s, drums, loops, MIDI, FX chains, and soundfonts. 256 MB zip.</p>
+          <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
+            <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
+            <input type="hidden" name="amount" value="20.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="rm" value="1">
+            <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
+            <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/#drumkits">
+            <button class="btn btn-primary" type="submit">Pay $20 with PayPal</button>
+          </form>
+        </article>
         <article class="kit-card">
           <h3>Welcome 2 Detroit</h3>
           <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
