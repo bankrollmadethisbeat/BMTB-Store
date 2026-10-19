@@ -130,24 +130,14 @@
       align-items: center;
       gap: 18px;
     }
-    .site-nav a,
-    .site-nav button {
+    .site-nav a {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .site-nav button {
-      background: none;
-      border: 0;
-      padding: 0;
-      font-family: inherit;
-      cursor: pointer;
-    }
-    .site-nav a:hover,
-    .site-nav button:hover,
-    .site-nav button[aria-expanded="true"] { color: var(--text); }
+    .site-nav a:hover { color: var(--text); }
     .container { max-width: 1120px; margin: 0 auto; padding: 8px 28px 72px; }
     h1, h2, h3 {
       font-family: var(--display);
@@ -779,94 +769,7 @@
       opacity: 1;
       pointer-events: auto;
     }
-    #store, #licenses, #drumkits, #contact, #newsletter, #proof, #store-player, #activity { scroll-margin-top: 90px; }
-    .kit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-    .kit-card {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 20px 18px 18px;
-      border: 1px solid var(--line);
-      border-top: 2px solid var(--brand);
-      border-radius: 18px;
-      background: rgba(0, 0, 0, 0.55);
-    }
-    .kit-card h3 {
-      margin: 0;
-      font-size: 1.35rem;
-    }
-    .kit-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-    .kit-card .btn {
-      margin-top: auto;
-      text-align: center;
-    }
-    .kit-price {
-      margin: 0;
-      font-family: var(--display);
-      font-size: 2rem;
-      letter-spacing: -0.04em;
-    }
-    .paypal-buy { margin-top: auto; }
-    .paypal-buy .btn { width: 100%; }
-    body.kits-open { overflow: hidden; }
-    .kits-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 220;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 84px 18px 24px;
-      background: rgba(0, 0, 0, 0.78);
-    }
-    .kits-backdrop.show { display: flex; }
-    .kits-panel {
-      width: min(1080px, 100%);
-      max-height: calc(100vh - 108px);
-      overflow: auto;
-      background: #000000;
-      border: 1px solid var(--line);
-      border-top: 2px solid var(--brand);
-      padding: 22px 18px 20px;
-    }
-    .kits-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .kits-head h2 { margin: 0; }
-    .kits-close {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-      padding: 8px 12px;
-      font: inherit;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-    .footer-links button {
-      background: none;
-      border: 0;
-      padding: 0;
-      font: inherit;
-      font-size: 13px;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-    .footer-links button:hover { color: var(--text); }
+    #store, #licenses, #contact, #newsletter, #proof, #store-player, #activity { scroll-margin-top: 90px; }
     footer {
       text-align: left;
       padding: 22px 28px 28px;
@@ -912,8 +815,7 @@
         z-index: 90;
       }
       .site-nav.open { transform: translateX(0); }
-      .site-nav a,
-      .site-nav button {
+      .site-nav a {
         width: 100%;
         padding: 14px 0;
         border-bottom: 1px solid var(--line);
@@ -949,8 +851,8 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <button type="button" data-open-panel="kits-backdrop" aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
-      <button type="button" data-open-panel="loops-backdrop" aria-expanded="false" aria-controls="loops-panel">Loopkits</button>
+      <a href="drumkits.html">Drumkits</a>
+      <a href="loopkits.html">Loopkits</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1082,99 +984,6 @@
       <div class="notice">Copy, stream, radio, and video limits are the amounts in the BeatStars contract you accept at checkout. All sales are final.</div>
     </section>
 
-    <div class="kits-backdrop" id="kits-backdrop">
-      <div class="kits-panel" id="kits-panel" role="dialog" aria-modal="true" aria-labelledby="kits-title">
-        <div class="kits-head">
-          <h2 id="kits-title">Drumkits</h2>
-          <button type="button" class="kits-close" data-close-panel>Close</button>
-        </div>
-        <div class="kit-grid">
-          <article class="kit-card">
-            <h3>Bankroll Stashkit 2025</h3>
-            <p class="kit-price">$20.00</p>
-            <p>808s, drums, loops, MIDI, FX chains, and soundfonts. 256 MB zip.</p>
-            <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
-              <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
-              <input type="hidden" name="amount" value="20.00">
-              <input type="hidden" name="currency_code" value="USD">
-              <input type="hidden" name="no_shipping" value="1">
-              <input type="hidden" name="rm" value="1">
-              <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
-              <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/#drumkits">
-              <button class="btn btn-primary" type="submit">Pay $20 with PayPal</button>
-            </form>
-          </article>
-          <article class="kit-card">
-            <h3>Welcome 2 Detroit</h3>
-            <p class="kit-price">Free</p>
-            <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Welcome 2 Detroit Vol. 2</h3>
-            <p class="kit-price">Free</p>
-            <p>Drums and MIDI. 230 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Welcome 2 Detroit Vol. 3</h3>
-            <p class="kit-price">Free</p>
-            <p>One-shots, 808s, percussion, FX, and extra sounds. 1.2 GB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Detroit MegaBank</h3>
-            <p class="kit-price">Free</p>
-            <p>300 Detroit sounds and soundfonts. 273 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/detroit-megabankover-300-detroit-sounds_94429.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Dead Zone Drumkit</h3>
-            <p class="kit-price">Free</p>
-            <p>2022 drumkit. 300 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/dead-zone-drumkit-2022_125690.zip">Download zip</a>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="kits-backdrop" id="loops-backdrop">
-      <div class="kits-panel" id="loops-panel" role="dialog" aria-modal="true" aria-labelledby="loops-title">
-        <div class="kits-head">
-          <h2 id="loops-title">Loopkits</h2>
-          <button type="button" class="kits-close" data-close-panel>Close</button>
-        </div>
-        <div class="kit-grid">
-          <article class="kit-card">
-            <h3>Bankroll Made These Loops Vol. 1</h3>
-            <p class="kit-price">Free</p>
-            <p>Loops. 1.4 GB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-1.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Bankroll Made These Loops Vol. 2</h3>
-            <p class="kit-price">Free</p>
-            <p>Loops. 32 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-2.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Ghetto Gospel Loopkit</h3>
-            <p class="kit-price">Free</p>
-            <p>Loops. 47 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Ghetto-Gospel-Loopkit.zip">Download zip</a>
-          </article>
-          <article class="kit-card">
-            <h3>Michigan Mozart</h3>
-            <p class="kit-price">Free</p>
-            <p>Loops. 48 MB zip.</p>
-            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Michigan-Mozart-Loopkit.zip">Download zip</a>
-          </article>
-        </div>
-      </div>
-    </div>
-
     <section class="faq" aria-label="Frequently asked questions">
       <h2>FAQ</h2>
       <details>
@@ -1252,8 +1061,8 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <button type="button" data-open-panel="kits-backdrop" aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
-      <button type="button" data-open-panel="loops-backdrop" aria-expanded="false" aria-controls="loops-panel">Loopkits</button>
+      <a href="drumkits.html">Drumkits</a>
+      <a href="loopkits.html">Loopkits</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1422,52 +1231,8 @@
       });
     }
 
-    const openPanel = (backdrop) => {
-      document.querySelectorAll('.kits-backdrop.show').forEach((open) => {
-        if (open !== backdrop) closePanel(open);
-      });
-      backdrop.classList.add('show');
-      document.body.classList.add('kits-open');
-      document.querySelectorAll(`[data-open-panel="${backdrop.id}"]`).forEach((button) => {
-        button.setAttribute('aria-expanded', 'true');
-      });
-      const closeButton = backdrop.querySelector('[data-close-panel]');
-      if (closeButton) closeButton.focus();
-    };
-
-    const closePanel = (backdrop) => {
-      backdrop.classList.remove('show');
-      document.body.classList.remove('kits-open');
-      document.querySelectorAll(`[data-open-panel="${backdrop.id}"]`).forEach((button) => {
-        button.setAttribute('aria-expanded', 'false');
-      });
-    };
-
-    document.querySelectorAll('[data-open-panel]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const backdrop = document.getElementById(button.getAttribute('data-open-panel'));
-        if (!backdrop) return;
-        closeMobileNav();
-        openPanel(backdrop);
-      });
-    });
-
-    document.querySelectorAll('.kits-backdrop').forEach((backdrop) => {
-      backdrop.addEventListener('click', (event) => {
-        if (event.target === backdrop) closePanel(backdrop);
-      });
-      const closeButton = backdrop.querySelector('[data-close-panel]');
-      if (closeButton) closeButton.addEventListener('click', () => closePanel(backdrop));
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-      document.querySelectorAll('.kits-backdrop.show').forEach(closePanel);
-    });
-
-    const hashPanels = { '#drumkits': 'kits-backdrop', '#loopkits': 'loops-backdrop' };
-    const hashedPanel = document.getElementById(hashPanels[location.hash] || '');
-    if (hashedPanel) openPanel(hashedPanel);
+    if (location.hash === '#drumkits') location.replace('drumkits.html');
+    if (location.hash === '#loopkits') location.replace('loopkits.html');
 
     const inquiryModal = document.getElementById('inquiry-modal');
     const inquiryTitle = document.getElementById('inquiry-title');

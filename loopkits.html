@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loopkits | BMTB</title>
+  <meta name="description" content="Free loopkits from BankrollMadeThisBeat." />
+  <link rel="canonical" href="https://bankrollmadethisbeat.com/loopkits.html" />
+  <link rel="icon" type="image/png" href="bmtb-logo.png" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #ffffff;
+      --text-muted: #d3d3d3;
+      --brand: #ff2b2b;
+      --brand-dark: #cc1010;
+      --line: rgba(255, 255, 255, 0.12);
+      --display: Syne, Manrope, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #000000;
+      color: var(--text);
+      font-family: Manrope, system-ui, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo img { height: 56px; width: auto; display: block; }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    nav a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    nav a:hover, nav a[aria-current="page"] { color: var(--text); }
+    main { max-width: 1120px; margin: 0 auto; padding: 36px 28px 72px; }
+    h1 {
+      margin: 0 0 8px;
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+    .lead { margin: 0; color: var(--text-muted); }
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .kit-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 18px 18px;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--brand);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.55);
+    }
+    .kit-card h2 { margin: 0; font-family: var(--display); font-size: 1.35rem; letter-spacing: -0.04em; }
+    .kit-card p { margin: 0; color: var(--text-muted); font-size: 14px; }
+    .kit-price {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: auto;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .btn:hover { background: var(--brand-dark); }
+    footer {
+      padding: 22px 28px 28px;
+      border-top: 1px solid var(--line);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    @media (max-width: 700px) {
+      header, main, footer { padding-left: 16px; padding-right: 16px; }
+      .logo img { height: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="/" aria-label="BMTB Store home">
+      <img src="bmtb-logo.png" alt="BMTB Logo" width="120" height="72">
+    </a>
+    <nav>
+      <a href="/">Store</a>
+      <a href="drumkits.html">Drumkits</a>
+      <a href="loopkits.html" aria-current="page">Loopkits</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Loopkits</h1>
+    <p class="lead">Free download. No email and no checkout.</p>
+    <div class="kit-grid">
+      <article class="kit-card">
+        <h2>Bankroll Made These Loops Vol. 1</h2>
+        <p class="kit-price">Free</p>
+        <p>Loops. 1.4 GB zip.</p>
+        <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-1.zip">Download zip</a>
+      </article>
+      <article class="kit-card">
+        <h2>Bankroll Made These Loops Vol. 2</h2>
+        <p class="kit-price">Free</p>
+        <p>Loops. 32 MB zip.</p>
+        <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Bankroll-Made-These-Loops-Vol-2.zip">Download zip</a>
+      </article>
+      <article class="kit-card">
+        <h2>Ghetto Gospel Loopkit</h2>
+        <p class="kit-price">Free</p>
+        <p>Loops. 47 MB zip.</p>
+        <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Ghetto-Gospel-Loopkit.zip">Download zip</a>
+      </article>
+      <article class="kit-card">
+        <h2>Michigan Mozart</h2>
+        <p class="kit-price">Free</p>
+        <p>Loops. 48 MB zip.</p>
+        <a class="btn" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-loopkits/Michigan-Mozart-Loopkit.zip">Download zip</a>
+      </article>
+    </div>
+  </main>
+  <footer>© <span id="year"></span> BankrollMadeThisBeat (BMTB). All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
