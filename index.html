@@ -769,7 +769,37 @@
       opacity: 1;
       pointer-events: auto;
     }
-    #store, #licenses, #contact, #newsletter, #proof, #store-player, #activity { scroll-margin-top: 90px; }
+    #store, #licenses, #drumkits, #contact, #newsletter, #proof, #store-player, #activity { scroll-margin-top: 90px; }
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .kit-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 18px 18px;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--brand);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.55);
+    }
+    .kit-card h3 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+    .kit-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .kit-card .btn {
+      margin-top: auto;
+      text-align: center;
+    }
+    #drumkits { margin-top: 56px; }
     footer {
       text-align: left;
       padding: 22px 28px 28px;
@@ -850,7 +880,7 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank" rel="noopener noreferrer">Drumkits</a>
+      <a href="#drumkits">Drumkits</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -982,6 +1012,28 @@
       <div class="notice">Copy, stream, radio, and video limits are the amounts in the BeatStars contract you accept at checkout. All sales are final.</div>
     </section>
 
+    <section id="drumkits" aria-label="Free drumkits">
+      <h2>Free Drumkits</h2>
+      <p class="activity-note">Free download. No email and no checkout.</p>
+      <div class="kit-grid">
+        <article class="kit-card">
+          <h3>Welcome 2 Detroit</h3>
+          <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
+          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
+        </article>
+        <article class="kit-card">
+          <h3>Welcome 2 Detroit Vol. 2</h3>
+          <p>Drums and MIDI. 230 MB zip.</p>
+          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
+        </article>
+        <article class="kit-card">
+          <h3>Welcome 2 Detroit Vol. 3</h3>
+          <p>One-shots, 808s, percussion, FX, and extra sounds. 1.2 GB zip.</p>
+          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
+        </article>
+      </div>
+    </section>
+
     <section class="faq" aria-label="Frequently asked questions">
       <h2>FAQ</h2>
       <details>
@@ -1059,7 +1111,7 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://bankrollmadethisbeat.gumroad.com/" target="_blank" rel="noopener noreferrer">Drumkits</a>
+      <a href="#drumkits">Drumkits</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#contact">Contact</a>
     </div>
