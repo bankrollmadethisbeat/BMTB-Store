@@ -130,14 +130,24 @@
       align-items: center;
       gap: 18px;
     }
-    .site-nav a {
+    .site-nav a,
+    .site-nav button {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .site-nav a:hover { color: var(--text); }
+    .site-nav button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .site-nav a:hover,
+    .site-nav button:hover,
+    .site-nav button[aria-expanded="true"] { color: var(--text); }
     .container { max-width: 1120px; margin: 0 auto; padding: 8px 28px 72px; }
     h1, h2, h3 {
       font-family: var(--display);
@@ -807,7 +817,56 @@
     }
     .paypal-buy { margin-top: auto; }
     .paypal-buy .btn { width: 100%; }
-    #drumkits { margin-top: 56px; }
+    body.kits-open { overflow: hidden; }
+    .kits-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 84px 18px 24px;
+      background: rgba(0, 0, 0, 0.78);
+    }
+    .kits-backdrop.show { display: flex; }
+    .kits-panel {
+      width: min(1080px, 100%);
+      max-height: calc(100vh - 108px);
+      overflow: auto;
+      background: #000000;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--brand);
+      padding: 22px 18px 20px;
+    }
+    .kits-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .kits-head h2 { margin: 0; }
+    .kits-close {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .footer-links button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .footer-links button:hover { color: var(--text); }
     footer {
       text-align: left;
       padding: 22px 28px 28px;
@@ -853,12 +912,14 @@
         z-index: 90;
       }
       .site-nav.open { transform: translateX(0); }
-      .site-nav a {
+      .site-nav a,
+      .site-nav button {
         width: 100%;
         padding: 14px 0;
         border-bottom: 1px solid var(--line);
         margin: 0;
         font-size: 15px;
+        text-align: left;
       }
       .site-nav a::after { display: none; }
     }
@@ -888,7 +949,7 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="#drumkits">Drumkits</a>
+      <button type="button" data-open-kits aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1020,44 +1081,63 @@
       <div class="notice">Copy, stream, radio, and video limits are the amounts in the BeatStars contract you accept at checkout. All sales are final.</div>
     </section>
 
-    <section id="drumkits" aria-label="Drumkits">
-      <h2>Drumkits</h2>
-      <p class="activity-note">Welcome 2 Detroit kits are free. Stashkit 2025 is $20 through PayPal.</p>
-      <div class="kit-grid">
-        <article class="kit-card">
-          <h3>Bankroll Stashkit 2025</h3>
-          <p class="kit-price">$20.00</p>
-          <p>808s, drums, loops, MIDI, FX chains, and soundfonts. 256 MB zip.</p>
-          <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
-            <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
-            <input type="hidden" name="amount" value="20.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="no_shipping" value="1">
-            <input type="hidden" name="rm" value="1">
-            <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
-            <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/#drumkits">
-            <button class="btn btn-primary" type="submit">Pay $20 with PayPal</button>
-          </form>
-        </article>
-        <article class="kit-card">
-          <h3>Welcome 2 Detroit</h3>
-          <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
-          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
-        </article>
-        <article class="kit-card">
-          <h3>Welcome 2 Detroit Vol. 2</h3>
-          <p>Drums and MIDI. 230 MB zip.</p>
-          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
-        </article>
-        <article class="kit-card">
-          <h3>Welcome 2 Detroit Vol. 3</h3>
-          <p>One-shots, 808s, percussion, FX, and extra sounds. 1.2 GB zip.</p>
-          <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
-        </article>
+    <div class="kits-backdrop" id="kits-backdrop">
+      <div class="kits-panel" id="kits-panel" role="dialog" aria-modal="true" aria-labelledby="kits-title">
+        <div class="kits-head">
+          <h2 id="kits-title">Drumkits</h2>
+          <button type="button" class="kits-close" id="kits-close">Close</button>
+        </div>
+        <div class="kit-grid">
+          <article class="kit-card">
+            <h3>Bankroll Stashkit 2025</h3>
+            <p class="kit-price">$20.00</p>
+            <p>808s, drums, loops, MIDI, FX chains, and soundfonts. 256 MB zip.</p>
+            <form class="paypal-buy" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="bankrollmadethisbeat@gmail.com">
+              <input type="hidden" name="item_name" value="Bankroll Stashkit 2025">
+              <input type="hidden" name="amount" value="20.00">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="no_shipping" value="1">
+              <input type="hidden" name="rm" value="1">
+              <input type="hidden" name="return" value="https://bankrollmadethisbeat.com/stashkit.html">
+              <input type="hidden" name="cancel_return" value="https://bankrollmadethisbeat.com/#drumkits">
+              <button class="btn btn-primary" type="submit">Pay $20 with PayPal</button>
+            </form>
+          </article>
+          <article class="kit-card">
+            <h3>Welcome 2 Detroit</h3>
+            <p class="kit-price">Free</p>
+            <p>Vol. 1. Drums, loops, and MIDI. 127 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-1.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Welcome 2 Detroit Vol. 2</h3>
+            <p class="kit-price">Free</p>
+            <p>Drums and MIDI. 230 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-2.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Welcome 2 Detroit Vol. 3</h3>
+            <p class="kit-price">Free</p>
+            <p>One-shots, 808s, percussion, FX, and extra sounds. 1.2 GB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/Welcome-2-Detroit-Vol-3.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Detroit MegaBank</h3>
+            <p class="kit-price">Free</p>
+            <p>300 Detroit sounds and soundfonts. 273 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/detroit-megabankover-300-detroit-sounds_94429.zip">Download zip</a>
+          </article>
+          <article class="kit-card">
+            <h3>Dead Zone Drumkit</h3>
+            <p class="kit-price">Free</p>
+            <p>2022 drumkit. 300 MB zip.</p>
+            <a class="btn btn-primary" href="https://github.com/bankrollmadethisbeat/BMTB-Store/releases/download/free-drumkits/dead-zone-drumkit-2022_125690.zip">Download zip</a>
+          </article>
+        </div>
       </div>
-    </section>
+    </div>
 
     <section class="faq" aria-label="Frequently asked questions">
       <h2>FAQ</h2>
@@ -1136,7 +1216,7 @@
       <a href="#licenses">Licenses</a>
       <a href="https://www.instagram.com/bankrollmadethisbeat/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.youtube.com/channel/UCZ0MlHGthr3EB8HCY4Clo_g" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="#drumkits">Drumkits</a>
+      <button type="button" data-open-kits aria-expanded="false" aria-controls="kits-panel">Drumkits</button>
       <a href="#newsletter">Newsletter</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1304,6 +1384,44 @@
         link.addEventListener('click', closeMobileNav);
       });
     }
+
+    const kitsBackdrop = document.getElementById('kits-backdrop');
+    const kitsClose = document.getElementById('kits-close');
+    const openKitsButtons = document.querySelectorAll('[data-open-kits]');
+
+    const openKits = () => {
+      if (!kitsBackdrop) return;
+      kitsBackdrop.classList.add('show');
+      document.body.classList.add('kits-open');
+      openKitsButtons.forEach((button) => button.setAttribute('aria-expanded', 'true'));
+      if (kitsClose) kitsClose.focus();
+    };
+
+    const closeKits = () => {
+      if (!kitsBackdrop) return;
+      kitsBackdrop.classList.remove('show');
+      document.body.classList.remove('kits-open');
+      openKitsButtons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
+      if (location.hash === '#drumkits') history.replaceState(null, '', location.pathname + location.search);
+    };
+
+    openKitsButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        closeMobileNav();
+        openKits();
+      });
+    });
+
+    if (kitsBackdrop) {
+      kitsBackdrop.addEventListener('click', (event) => {
+        if (event.target === kitsBackdrop) closeKits();
+      });
+    }
+    if (kitsClose) kitsClose.addEventListener('click', closeKits);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && kitsBackdrop && kitsBackdrop.classList.contains('show')) closeKits();
+    });
+    if (location.hash === '#drumkits') openKits();
 
     const inquiryModal = document.getElementById('inquiry-modal');
     const inquiryTitle = document.getElementById('inquiry-title');
